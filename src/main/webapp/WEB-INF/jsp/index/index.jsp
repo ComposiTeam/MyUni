@@ -31,11 +31,10 @@
   <meta charset="UTF-8">
   </head>
   <body>
-  <%@ include file="navbar.jsp" %>
-  <%@ include file="home.jsp" %>  
-  <%@ include file="login.jsp" %> 
-  <%@ include file="feedbacks.jsp" %>
-  <%@ include file="footer.jsp" %> 
+	  <%@ include file="navbar.jsp" %>
+	  <%@ include file="home.jsp" %>  
+	 <jsp:include page="../user/register.jsp"></jsp:include>
+	  <%@ include file="footer.jsp" %> 
   
   
   

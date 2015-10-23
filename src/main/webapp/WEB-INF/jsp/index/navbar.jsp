@@ -24,16 +24,12 @@
                         <a href="#home">Home</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#calcular-ira">Calcular IRA</a>
+                        <a href="#register">Registre-se</a>
                     </li>
-                    <li class="page-scroll">
-                        <a href="#feedback">Feedback de Disciplinas</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#gerar-grade">Gerar grade horária</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#login">Login</a>
+                    <li>
+                        <input class="input-text-login" type="text" id="username-inputType" placeholder="Username" ></input>
+                        <input class="input-text-login" type="text" id="password-inputType" placeholder="Password"></input>
+                        <input class="input-button-login" type="button" id="login-inputButton" value="Login"></input>
                     </li>
                 </ul>
             </div>

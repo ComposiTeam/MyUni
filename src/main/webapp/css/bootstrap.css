@@ -117,6 +117,16 @@ textarea {
   font: inherit;
   color: inherit;
 }
+.input-text-login{
+	margin: 10px;
+	font: inherit;
+	color: inherit;
+}
+
+.input-button-login{
+	margin: 10px;
+}
+
 button {
   overflow: visible;
 }
@@ -4994,6 +5004,7 @@ a.badge:focus {
   color: #337ab7;
   background-color: #fff;
 }
+
 .list-group-item > .badge {
   float: right;
 }
@@ -5010,6 +5021,11 @@ a.badge:focus {
     margin-bottom: 30px;
     color: inherit;
     background-color: #D7D7D7;
+    font-size: 22px;
+}
+
+.register-button{
+	width: 270px;
 }
 
 .jumbotron {
@@ -5538,7 +5554,7 @@ button.list-group-item-danger.active:focus {
 }
 .panel-footer {
   padding: 10px 15px;
-  background-color: #f5f5f5;
+  background-color: #555753;
   border-top: 1px solid #ddd;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
