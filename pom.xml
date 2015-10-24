@@ -1,12 +1,13 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>br.com.caelum</groupId>
-	<artifactId>vraptor-blank-project</artifactId>
-	<version>4.2.0-RC4-SNAPSHOT</version>
+	<groupId>com.modesteam.urutau</groupId>
+	<artifactId>Urutau</artifactId>
+	<version>0.01</version>
 	<packaging>war</packaging>
 
-	<description>A blank project to start using VRaptor 4</description>
+	<description>High adaptability, easy to understand</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -17,7 +18,13 @@
 		<dependency>
 			<groupId>br.com.caelum</groupId>
 			<artifactId>vraptor</artifactId>
-			<version>4.2.0-RC3</version>
+			<version>4.2.0-RC3</version> <!--or the latest version -->
+		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.36</version>
 		</dependency>
 
 		<dependency>
@@ -25,24 +32,42 @@
 			<artifactId>weld-servlet-core</artifactId>
 			<version>${weld.version}</version>
 		</dependency>
-		
-        <dependency>
-            <groupId>org.jboss.weld</groupId>
-            <artifactId>weld-core-impl</artifactId>
-            <version>${weld.version}</version>
-        </dependency>
 
 		<dependency>
-		    <groupId>javax.el</groupId>
-		    <artifactId>el-api</artifactId>
-		    <version>2.2</version>
-		    <scope>provided</scope>
+			<groupId>org.jboss.weld</groupId>
+			<artifactId>weld-core-impl</artifactId>
+			<version>${weld.version}</version>
 		</dependency>
-		
+
+		<dependency>
+			<groupId>javax.el</groupId>
+			<artifactId>el-api</artifactId>
+			<version>2.2</version>
+			<scope>provided</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator-cdi</artifactId>
 			<version>5.1.1.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>br.com.caelum.vraptor</groupId>
+			<artifactId>vraptor-jpa</artifactId>
+			<version>4.0.2</version> <!-- or the latest version -->
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>4.3.0.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>4.3.0.Final</version>
 		</dependency>
 
 		<dependency>
@@ -57,53 +82,57 @@
 			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.7.5</version>
 		</dependency>
-		
-		<dependency>
-		    <groupId>org.webjars</groupId>
-		    <artifactId>bootstrap</artifactId>
-		    <version>3.2.0</version>
-		    <exclusions>
-		        <exclusion>
-		            <groupId>org.webjars</groupId>
-		            <artifactId>jquery</artifactId>
-		        </exclusion>
-		    </exclusions>
-		</dependency>
- 
-	<dependency>
-	    <groupId>org.webjars</groupId>
-	    <artifactId>jquery</artifactId>
-	    <version>2.1.1</version>
-	</dependency>
 
-	<dependency>
-		<groupId>org.hibernate</groupId>
-		<artifactId>hibernate-core</artifactId>
-		<version>5.0.0.Final</version>
-	</dependency>
-	
-	<dependency>
-		<groupId>br.com.caelum.vraptor</groupId>
-		<artifactId>vraptor-jpa</artifactId>
-		<version>4.0.2</version>
-	</dependency>
-	
-	<dependency>
-		<groupId>mysql</groupId>
-		<artifactId>mysql-connector-java</artifactId>
-		<version>5.1.34</version>
-	</dependency>
-		
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-email</artifactId>
+			<version>1.4</version>
+		</dependency>
+
+		<!-- libs for test -->
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-api-easymock</artifactId>
+			<version>1.6.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib-nodep</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.objenesis</groupId>
+			<artifactId>objenesis</artifactId>
+			<version>2.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.easymock</groupId>
+			<artifactId>easymock</artifactId>
+			<version>3.3.1</version>
+
+		</dependency>
+
 	</dependencies>
 
 	<build>
-		<finalName>vraptor-blank-project</finalName>
+		<finalName>Urutau</finalName>
 		<outputDirectory>${basedir}/src/main/webapp/WEB-INF/classes</outputDirectory>
 		<plugins>
 			<plugin>
@@ -157,7 +186,8 @@
 						<configuration>
 							<target>
 								<copy file="${basedir}/pom-dist.xml" todir="${project.build.directory}" />
-								<replace file="${project.build.directory}/pom-dist.xml" token="VRAPTOR_VERSION_HERE" value="${project.version}" />
+								<replace file="${project.build.directory}/pom-dist.xml"
+									token="VRAPTOR_VERSION_HERE" value="${project.version}" />
 							</target>
 						</configuration>
 						<goals>

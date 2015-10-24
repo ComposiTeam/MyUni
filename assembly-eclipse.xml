@@ -15,7 +15,7 @@
 				<include>*</include>
 			</includes>
 			<excludes>
-				<exclude>br.com.caelum:vraptor-blank-project</exclude>
+				<exclude>com.modesteam.urutau:Urutau</exclude>
 			</excludes>
 		</dependencySet>
 	</dependencySets>
@@ -76,4 +76,3 @@
 		</fileSet>
 	</fileSets>
 </assembly>
-
