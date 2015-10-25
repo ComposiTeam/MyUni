@@ -24,7 +24,7 @@ public class UserService {
 	
 	public boolean existsField(String field, String value){
 		try{
-				if(userDAO.get(field,value) != null){
+				if(userDAO.find(field,value) != null){
 					return false;
 				}
 				else
@@ -43,7 +43,7 @@ public class UserService {
 	
 	public boolean existsUser(String login){
 		boolean userExistence;
-		if(userDAO.get("login", login) !=null ){
+		if(userDAO.find("login", login) !=null ){
 			userExistence = true;
 		}
 		else{
@@ -56,8 +56,15 @@ public class UserService {
 	
 	public User authenticate(String login, String password){
 
-		User user = userDAO.get("username", login);
+		/*User user = new User();
+		user.setUsername("ADMIN");
+		user.setPassword("ADMIN");*/
+	
+		User user = userDAO.find("username", login);
 		
+		
+		return user;
+		/*
 		if(user != null)
 		{
 			boolean correctPassword = user.getPassword().equals(password);
@@ -72,7 +79,7 @@ public class UserService {
 		else {
 			return null;
 		}
-		
+		*/
 		
 	}
 }
