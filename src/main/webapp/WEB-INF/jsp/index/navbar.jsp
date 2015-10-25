@@ -27,9 +27,11 @@
                         <a href="#register">Registre-se</a>
                     </li>
                     <li>
-                        <input class="input-text-login" type="text" id="username-inputType" placeholder="Username" ></input>
-                        <input class="input-text-login" type="text" id="password-inputType" placeholder="Password"></input>
-                        <input class="input-button-login" type="button" id="login-inputButton" value="Login"></input>
+                    	<form  action="login" method="POST">
+                        <input class="input-text-login" type="text" name="user.username" id="username-inputType" placeholder="Username" ></input>
+                        <input class="input-text-login" name="user.password" type="password" id="password-inputType" placeholder="Password"></input>
+                        <input class="input-button-login" type="submit" id="login-inputButton" value="Login"></input>
+                    </form>
                     </li>
                 </ul>
             </div>
