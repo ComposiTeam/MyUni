@@ -20,11 +20,10 @@ public class UserDAO {
 		manager.persist(user);
 	}
 	
-	public User get(String field, String value){
+	public User find(String field, String value){
 
-		
 		String sql = "SELECT user FROM User user";
-		
+	
 		// Verifies if select have an criteria
 		boolean isGenericSelect = field != null && value != null;
 		

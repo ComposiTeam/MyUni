@@ -15,7 +15,6 @@ public class User {
 	private String username;
 	private String password;
 	private String email;
-	private boolean agreeded;
 	
 	public String getUsername() {
 		return username;
@@ -41,12 +40,7 @@ public class User {
 	public void setId(Long id) {
 		this.id =  id;
 	}
-	public boolean isAgreeded() {
-		return agreeded;
-	}
-	public void setAgreeded(boolean agreeded) {
-		this.agreeded = agreeded;
-	}
+	
 	
 	
 

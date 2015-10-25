@@ -38,16 +38,16 @@ public class AuthenticationController {
 	}
 
 	
-	@Post
+	@Get
 	@Path("/login")
 	public void login(User user){
+		
 		
 		String informedUsername = user.getUsername();
 		String informedPassword = user.getPassword();
 		
 		User userAuth = userService.authenticate(informedUsername,
 				informedPassword);
-		
 		
 		if(userAuth!=null){
 			
