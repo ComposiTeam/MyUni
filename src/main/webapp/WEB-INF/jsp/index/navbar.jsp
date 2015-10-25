@@ -27,11 +27,11 @@
                         <a href="#register">Registre-se</a>
                     </li>
                     <li>
-                    	<form  action="login" method="GET">
+                    	<form  action="login" method="POST">
                         <input class="input-text-login" type="text" name="user.username" id="username-inputType" placeholder="Username" ></input>
                         <input class="input-text-login" name="user.password" type="password" id="password-inputType" placeholder="Password"></input>
                         <input class="input-button-login" type="submit" id="login-inputButton" value="Login"></input>
-                    </form>
+                    	</form>
                     </li>
                 </ul>
             </div>

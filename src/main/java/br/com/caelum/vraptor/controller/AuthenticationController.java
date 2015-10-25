@@ -8,9 +8,9 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.annotation.View;
+import br.com.caelum.vraptor.dao.UserDAO;
 import br.com.caelum.vraptor.manager.UserManager;
 import br.com.caelum.vraptor.model.User;
-import br.com.caelum.vraptor.service.UserService;
 import br.com.caelum.vraptor.validator.SimpleMessage;
 import br.com.caelum.vraptor.validator.Validator;
 
@@ -18,10 +18,10 @@ import br.com.caelum.vraptor.validator.Validator;
 public class AuthenticationController {
 	
 	private static final String LOGIN_ERROR = null;
-	private final Result result;
-	private final UserService userService;
+	private final UserDAO userDAO;
 	private final UserManager userManager;
-	private final Validator validator;
+	private final Result result;
+	private Validator validator;
 	
 	public AuthenticationController()
 	{
@@ -29,30 +29,31 @@ public class AuthenticationController {
 	}
 	
 	@Inject
-	public AuthenticationController(Result result, UserService userService ,UserManager userManager, Validator validator)
+	public AuthenticationController(Result result, UserDAO userDAO , UserManager userManager ,Validator validator)
 	{
 		this.result= result;
-		this.userService = userService;
+		this.userDAO = userDAO;
 		this.userManager = userManager;
 		this.validator = validator;
 	}
 
 	
-	@Get
+	@Post
 	@Path("/login")
 	public void login(User user){
-		
-		
+	
 		String informedUsername = user.getUsername();
 		String informedPassword = user.getPassword();
 		
-		User userAuth = userService.authenticate(informedUsername,
-				informedPassword);
 		
-		if(userAuth!=null){
+		
+		User userAuth = userDAO.find("username", informedUsername);
+		
+		if(userAuth.getPassword()!=informedPassword){
 			
 			userManager.login(userAuth);
-			result.redirectTo(AuthenticationController.class).gradPlanner();
+			result.redirectTo(AuthenticationController.class).welcome();
+		
 		}
 		else
 		{
@@ -69,7 +70,13 @@ public class AuthenticationController {
 	}
 	
 	@View
-	public void gradPlanner()
+	public void welcome()
+	{
+		
+	}
+	
+	@View
+	public void loginError()
 	{
 		
 	}
