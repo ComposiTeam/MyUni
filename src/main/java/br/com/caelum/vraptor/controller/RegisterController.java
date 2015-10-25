@@ -11,19 +11,19 @@ import br.com.caelum.vraptor.dao.UserDAO;
 import br.com.caelum.vraptor.model.User;
 
 @Controller
-public class UserController {
+public class RegisterController {
 	
 	private final Result result;
 	private final UserDAO userDAO;
 	
 	//Empty constructor CDI Only
-	public UserController()
+	public RegisterController()
 	{
 		this(null, null);
 	}
 	
 	@Inject
-	public UserController(Result result, UserDAO userDAO)
+	public RegisterController(Result result, UserDAO userDAO)
 	{
 		this.result= result;
 		this.userDAO = userDAO;
