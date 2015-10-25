@@ -20,15 +20,16 @@ public class UserDAO {
 		manager.persist(user);
 	}
 	
-	public User find(String field, String value){
-
+	public User find(String field, Object value){
+		
+		
 		String sql = "SELECT user FROM User user";
 	
 		// Verifies if select have an criteria
 		boolean isGenericSelect = field != null && value != null;
 		
 		if(isGenericSelect) {
-			sql = sql + " WHERE user.".concat(field)+ " = " .concat(value);
+			sql = sql + " WHERE user.".concat(field).concat("=:value");
 		} else {
 			// default sql string
 		}

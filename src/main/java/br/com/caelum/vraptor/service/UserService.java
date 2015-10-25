@@ -7,7 +7,7 @@ import br.com.caelum.vraptor.model.User;
 
 public class UserService {
 	
-	private final UserDAO userDAO;
+	private UserDAO userDAO;
 	
 	public UserService()
 	{
@@ -56,15 +56,10 @@ public class UserService {
 	
 	public User authenticate(String login, String password){
 
-		/*User user = new User();
-		user.setUsername("ADMIN");
-		user.setPassword("ADMIN");*/
-	
+		
 		User user = userDAO.find("username", login);
+	
 		
-		
-		return user;
-		/*
 		if(user != null)
 		{
 			boolean correctPassword = user.getPassword().equals(password);
@@ -79,7 +74,7 @@ public class UserService {
 		else {
 			return null;
 		}
-		*/
+	
 		
 	}
 }
