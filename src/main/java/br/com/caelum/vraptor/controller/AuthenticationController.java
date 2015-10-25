@@ -49,18 +49,25 @@ public class AuthenticationController {
 		
 		User userAuth = userDAO.find("username", informedUsername);
 		
-		if(userAuth.getPassword()!=informedPassword){
-			
-			userManager.login(userAuth);
-			result.redirectTo(AuthenticationController.class).welcome();
-		
+		if(userAuth!=null)
+		{
+			if(userAuth.getPassword().equals(informedPassword)){
+				
+				userManager.login(userAuth);
+				result.redirectTo(AuthenticationController.class).welcome();
+			}
+			else
+			{
+				validator.add(new SimpleMessage(LOGIN_ERROR, "Senha ou login não conferem!"));
+				validator.onErrorUsePageOf(IndexController.class).index();
+			}
 		}
 		else
 		{
 			validator.add(new SimpleMessage(LOGIN_ERROR, "Senha ou login não conferem!"));
-			validator.onErrorUsePageOf(IndexController.class).index();
+			result.redirectTo(AuthenticationController.class).loginError();
 		}
-	
+		
 	}
 	
 	@Get("/logout")
