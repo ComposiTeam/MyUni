@@ -7,11 +7,17 @@ import javax.persistence.NoResultException;
 import javax.persistence.NonUniqueResultException;
 import javax.persistence.Query;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import br.com.caelum.vraptor.controller.AuthenticationController;
+import br.com.caelum.vraptor.model.Student;
 import br.com.caelum.vraptor.model.User;
 
 @RequestScoped
 public class UserDAO {
 	
+	private static final Logger logger = LoggerFactory.getLogger(UserDAO.class);
 	@Inject 
 	private EntityManager manager;
 	
@@ -45,8 +51,25 @@ public class UserDAO {
 			
 			return (User) query.getSingleResult();
 		} catch (NonUniqueResultException exception){
-			throw new NonUniqueResultException();
+			logger.info(exception.getMessage());
+			return null;
 		} catch (NoResultException exception) {
+			logger.info(exception.getMessage());
+			return null;
+		}
+		
+	}
+	
+	public Student getStudent(User user){
+		try {
+			Query query = manager.createQuery("select student FROM Student student WHERE student.user =:value ");
+			query.setParameter("value", user);
+			return (Student)query.getSingleResult();
+		} catch (NonUniqueResultException exception){
+			logger.info(exception.getMessage());
+			return null;
+		} catch (NoResultException exception) {
+			logger.info(exception.getMessage());
 			return null;
 		}
 		
