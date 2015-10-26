@@ -30,8 +30,11 @@
                     	<a href="feedbacks">Feedbacks</a>
                     </li>
                     <li class="page-scroll">
+                    	<a href="settings">Conta</a>
+                    </li>
+                    <li class="page-scroll">
                     	<div class="logged-info">${manager.getUserLogged().getUsername() } | 
-                    	<a href=<c:url value="/logout">Sair</a></div>
+                    	<a href="<c:url value='/logout'" >Sair</a></div>
                     </li>
                 </ul>
             </div>
