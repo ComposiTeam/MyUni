@@ -4,23 +4,21 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.OneToOne;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Inheritance(strategy=InheritanceType.JOINED)
-public class Person {
-	
+public class Discipline {
+
 	@Id
 	@GeneratedValue
 	@Column(name="id")
 	private Long id;
 	
+	private String code;
+	
 	private String name;
 	
-	@OneToOne(optional = false)
-	private User user;
+	private int NumberOfCredits;
 
 	public Long getId() {
 		return id;
@@ -28,6 +26,14 @@ public class Person {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	public String getName() {
@@ -38,15 +44,13 @@ public class Person {
 		this.name = name;
 	}
 
-	public User getUser() {
-		return user;
+	public int getNumberOfCredits() {
+		return NumberOfCredits;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setNumberOfCredits(int numberOfCredits) {
+		NumberOfCredits = numberOfCredits;
 	}
-	
-	
 	
 	
 }

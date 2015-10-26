@@ -3,11 +3,15 @@ package br.com.caelum.vraptor.model;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -19,6 +23,9 @@ public abstract class TranscriptOfRecords {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "transResults", joinColumns = @JoinColumn(name = "idTranscriptOfRecords"), 
+			inverseJoinColumns = @JoinColumn(name = "idDisciplineResults"))
 	private List<DisciplineResult> disciplineResults;
 	
 	@NotNull

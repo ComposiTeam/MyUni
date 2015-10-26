@@ -11,5 +11,5 @@ public interface DAOInterface<Entity> {
 	
 	public Entity getEntityByField(String field, Object object);
 	
-	public Entity searchByID(int id);
+	public Entity searchByID(Long id);
 }

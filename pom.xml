@@ -3,7 +3,6 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.modesteam.urutau</groupId>
-	<artifactId>Urutau</artifactId>
 	<version>0.01</version>
 	<packaging>war</packaging>
 
@@ -132,7 +131,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>Urutau</finalName>
+		<finalName>gradPlanner</finalName>
 		<outputDirectory>${basedir}/src/main/webapp/WEB-INF/classes</outputDirectory>
 		<plugins>
 			<plugin>
@@ -230,4 +229,5 @@
 		</plugins>
 	</build>
 
+	<artifactId>gradPlanner</artifactId>
 </project>

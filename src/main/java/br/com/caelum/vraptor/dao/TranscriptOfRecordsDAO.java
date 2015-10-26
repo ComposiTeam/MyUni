@@ -60,7 +60,7 @@ public class TranscriptOfRecordsDAO implements DAOInterface<TranscriptOfRecords>
 	}
 
 	@Override
-	public TranscriptOfRecords searchByID(int id) {
+	public TranscriptOfRecords searchByID(Long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
