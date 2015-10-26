@@ -76,7 +76,7 @@ public class AuthenticationController {
 		result.redirectTo(IndexController.class).index();
 	}
 	
-	@View
+	@Path("/welcome")
 	public void welcome()
 	{
 		
