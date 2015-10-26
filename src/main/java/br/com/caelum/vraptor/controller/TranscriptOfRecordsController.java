@@ -4,6 +4,8 @@ import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.annotation.View;
+import br.com.caelum.vraptor.model.TranscriptOfRecords;
 import br.com.caelum.vraptor.service.TranscriptOfRecordsService;
 import br.com.caelum.vraptor.validator.Validator;
 
@@ -36,8 +38,31 @@ public class TranscriptOfRecordsController {
 	
 	
 	@Post
+	@Path("/solicitateTranscriptRegistration")
+	public void solicitateTranscriptRegistration(int periodOfAdmission, int yearOfAdmission){
+		logger.debug("periodOfAdmission: " + periodOfAdmission + " yearOfAdmission:" +yearOfAdmission );
+		result.redirectTo(this).registerTranscript(periodOfAdmission, yearOfAdmission);
+	}
+
+
+	@View
 	@Path("/registerTranscript")
-	public solicitateTranscriptRegistration(int period, int year){
+	private void registerTranscript(int periodOfAdmission, int yearOfAdmission) {
+		
+	}
+	
+	@Post	
+	@Path("/registerTranscript")
+	private void create( TranscriptOfRecords transcriptOfRecords){
+		transcriptService.save(transcriptOfRecords);
+		result.redirectTo(this).showTranscriptOfRecords();
+		validator.onErrorForwardTo(IndexController.class).index();
+	
+	}
+
+
+	private void showTranscriptOfRecords() {
+		// TODO Auto-generated method stub
 		
 	}
 	
