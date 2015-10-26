@@ -7,7 +7,7 @@ public class Student extends Person {
 	
 	private String mwId;
 	
-	private String mwPassord;
+	private String mwPassword;
 
 	public String getMwId() {
 		return mwId;
@@ -17,13 +17,15 @@ public class Student extends Person {
 		this.mwId = mwId;
 	}
 
-	public String getMwPassord() {
-		return mwPassord;
+	public String getMwPassword() {
+		return mwPassword;
 	}
 
-	public void setMwPassord(String mwPassord) {
-		this.mwPassord = mwPassord;
+	public void setMwPassword(String mwPassword) {
+		this.mwPassword = mwPassword;
 	}
+
+	
 	
 	
 

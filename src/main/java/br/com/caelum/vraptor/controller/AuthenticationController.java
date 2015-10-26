@@ -2,6 +2,9 @@ package br.com.caelum.vraptor.controller;
 
 import javax.inject.Inject;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
@@ -10,6 +13,7 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.annotation.View;
 import br.com.caelum.vraptor.dao.UserDAO;
 import br.com.caelum.vraptor.manager.UserManager;
+import br.com.caelum.vraptor.model.Student;
 import br.com.caelum.vraptor.model.User;
 import br.com.caelum.vraptor.validator.SimpleMessage;
 import br.com.caelum.vraptor.validator.Validator;
@@ -17,6 +21,7 @@ import br.com.caelum.vraptor.validator.Validator;
 @Controller
 public class AuthenticationController {
 	
+	private static final Logger logger = LoggerFactory.getLogger(AuthenticationController.class);
 	private static final String LOGIN_ERROR = null;
 	private final UserDAO userDAO;
 	private final UserManager userManager;
@@ -78,6 +83,9 @@ public class AuthenticationController {
 	
 	@Path("/settings")
 	public void settings(){
+		User user = userManager.getUserLogged();
+		Student student = userDAO.getStudent(user);
+		result.include("student", student);
 		
 	}
 	
