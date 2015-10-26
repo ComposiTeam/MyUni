@@ -9,41 +9,36 @@ import br.com.caelum.vraptor.model.User;
 
 @SessionScoped
 @Named("manager")
-public class UserManager implements Serializable{
-	
+public class UserManager implements Serializable {
+
 	private static final long serialVersionUID = 1L;
-	
+
 	private User userLogged;
-	
-	
-	public void login(User user){
+
+	public void login(User user) {
 		setUserLogged(user);
 	}
-	
-	public void logout()
-	{
+
+	public void logout() {
 		setUserLogged(null);
 	}
-	
-	public User getUserLogged(){
-		if(userLogged == null){
+
+	public User getUserLogged() {
+		if (userLogged == null) {
 			throw new NullPointerException("Don't have user in session!");
-		}
-		else
-		{
+		} else {
 			return userLogged;
 		}
 	}
-		public void setUserLogged(User userLogged)
-		{
-			this.userLogged = userLogged;
-		}
-		
-		public boolean isLogged(){
-			boolean isLogged = false;
-			isLogged = (userLogged != null);
-			
-			return isLogged;
-		}
-}
 
+	public void setUserLogged(User userLogged) {
+		this.userLogged = userLogged;
+	}
+
+	public boolean isLogged() {
+		boolean isLogged = false;
+		isLogged = (userLogged != null);
+
+		return isLogged;
+	}
+}

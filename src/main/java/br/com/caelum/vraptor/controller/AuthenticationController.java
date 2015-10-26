@@ -76,6 +76,11 @@ public class AuthenticationController {
 		result.redirectTo(IndexController.class).index();
 	}
 	
+	@Path("/settings")
+	public void settings(){
+		
+	}
+	
 	@Path("/welcome")
 	public void welcome()
 	{
