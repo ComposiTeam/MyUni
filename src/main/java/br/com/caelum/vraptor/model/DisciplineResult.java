@@ -1,16 +1,30 @@
 package br.com.caelum.vraptor.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToOne;
 
 @Entity
 public class DisciplineResult {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "disciplineResultID")
 	private long id;
+	
+	@OneToOne(optional=true)
+	@JoinTable(name= "DisciplineResultMention",
+	joinColumns= {
+			@JoinColumn(name="DisciplineResultID", unique = true)
+			},
+	inverseJoinColumns = {
+			@JoinColumn(name="mentionID")
+	})
 	private Mention mention;
 	private int year;
 	private int semester;	

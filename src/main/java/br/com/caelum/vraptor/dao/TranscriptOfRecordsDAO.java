@@ -1,5 +1,6 @@
 package br.com.caelum.vraptor.dao;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -9,36 +10,47 @@ import javax.persistence.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 import br.com.caelum.vraptor.model.TranscriptOfRecords;
 
+@RequestScoped
+public class TranscriptOfRecordsDAO {
 
-public class TranscriptOfRecordsDAO implements DAOInterface<TranscriptOfRecords>{
-
-	private static final Logger logger = LoggerFactory.getLogger(TranscriptOfRecordsDAO.class);
+	private static Logger logger = LoggerFactory.getLogger(TranscriptOfRecordsDAO.class);
 	
 	@Inject
 	private EntityManager manager;
 	
-	@Override
+	/*CDI only*/
+	public TranscriptOfRecordsDAO()
+	{
+		this(null);
+	}
+	
+	@Inject
+	public TranscriptOfRecordsDAO(Logger logger)
+	{
+		TranscriptOfRecordsDAO.logger = logger;
+	}
+	
+	
 	public void create(TranscriptOfRecords entity) {
 		logger.info("Creating the object Transcript of Records.");
 		manager.persist(entity);
 	}
 
-	@Override
+	
 	public boolean update(TranscriptOfRecords entity) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
+	
 	public boolean destroy(TranscriptOfRecords entity) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
+	
 	public TranscriptOfRecords getEntityByField(String field, Object object) {
 		logger.debug("field." + field + "=" +object );
 		
@@ -59,7 +71,7 @@ public class TranscriptOfRecordsDAO implements DAOInterface<TranscriptOfRecords>
 	
 	}
 
-	@Override
+	
 	public TranscriptOfRecords searchByID(int id) {
 		// TODO Auto-generated method stub
 		return null;

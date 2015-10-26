@@ -1,5 +1,6 @@
 package br.com.caelum.vraptor.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +11,7 @@ public class Mention {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="addressID")
 	private long id;
 	private String description;
 	private String abreviation;
