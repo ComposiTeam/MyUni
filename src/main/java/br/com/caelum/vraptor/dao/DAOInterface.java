@@ -1,5 +1,7 @@
 package br.com.caelum.vraptor.dao;
 
+import java.util.List;
+
 
 public interface DAOInterface<Entity> {
 
@@ -12,4 +14,6 @@ public interface DAOInterface<Entity> {
 	public Entity getEntityByField(String field, Object object);
 	
 	public Entity searchByID(Long id);
+	
+	public List<Entity> list();
 }

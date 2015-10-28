@@ -1,5 +1,7 @@
 package br.com.caelum.vraptor.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -8,7 +10,6 @@ import javax.persistence.Query;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 
 import br.com.caelum.vraptor.model.TranscriptOfRecords;
 
@@ -64,6 +65,14 @@ public class TranscriptOfRecordsDAO implements DAOInterface<TranscriptOfRecords>
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public List<TranscriptOfRecords> list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 
 	
 	
