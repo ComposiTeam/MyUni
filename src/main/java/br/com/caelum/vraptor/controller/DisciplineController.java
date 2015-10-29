@@ -15,6 +15,7 @@ import br.com.caelum.vraptor.manager.UserManager;
 import br.com.caelum.vraptor.model.Discipline;
 import br.com.caelum.vraptor.service.DisciplineService;
 import br.com.caelum.vraptor.validator.Validator;
+import br.com.compositeam.unb.OfferPage;
 
 @Controller
 public class DisciplineController {
@@ -73,6 +74,12 @@ public class DisciplineController {
 		List<Discipline> list = disciplineService.list();
 		logger.info("The list has " + list.size() + " elements");
 		return disciplineService.list();
+	}
+	
+	public void addAll(){
+		OfferPage offerPage = new OfferPage("650",this.disciplineService);
+		offerPage.extractData();
+		offerPage.save();
 	}
 	
 	

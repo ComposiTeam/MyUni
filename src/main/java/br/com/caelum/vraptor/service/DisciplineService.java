@@ -1,6 +1,7 @@
 package br.com.caelum.vraptor.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -10,11 +11,12 @@ import org.slf4j.LoggerFactory;
 
 import br.com.caelum.vraptor.dao.DisciplineDAO;
 import br.com.caelum.vraptor.model.Discipline;
+import br.com.compositeam.unb.storage.OfferStorage;
 
 
 
 @RequestScoped
-public class DisciplineService {
+public class DisciplineService implements OfferStorage {
 	private final static Logger logger = LoggerFactory.getLogger(UserService.class);
 	
 	private final DisciplineDAO disciplineDAO;
@@ -36,5 +38,15 @@ public class DisciplineService {
 	
 	public List<Discipline> list(){
 		return disciplineDAO.list();
+	}
+
+	@Override
+	public void save(Map<String, String> data) {
+		for(String key : data.keySet()){
+			Discipline discipline = new Discipline();
+			discipline.setCode(key);
+			discipline.setName(data.get(key));
+			this.disciplineDAO.create(discipline);
+		}
 	}
 }

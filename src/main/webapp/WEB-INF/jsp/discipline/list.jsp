@@ -11,7 +11,7 @@
 	<h1>Testando lista de disciplinas</h1>
 	<ul>
 		<c:forEach items="${disciplineList}" var="discipline">
-			<li>${discipline.code}- ${discipline.name}</li>
+			<li>${discipline.code} - ${discipline.name}</li>
 		</c:forEach>
 	</ul>
 </body>
