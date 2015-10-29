@@ -17,6 +17,9 @@ public class Mention {
 	private String abreviation;
 	private int weight;
 	
+	public Mention(){
+		
+	}
 	
 	public Mention(String description, String abreviation, int weight) {		
 		this.description = description;

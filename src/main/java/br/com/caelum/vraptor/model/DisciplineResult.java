@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -17,22 +15,21 @@ public class DisciplineResult {
 	@Column(name = "disciplineResultID")
 	private long id;
 	
-	@OneToOne(optional=true)
-	@JoinTable(name= "DisciplineResultMention",
-	joinColumns= {
-			@JoinColumn(name="DisciplineResultID", unique = true)
-			},
-	inverseJoinColumns = {
-			@JoinColumn(name="mentionID")
-	})
+	@OneToOne
 	private Mention mention;
-	private int year;
-	private int semester;	
+	
+	@OneToOne
+	private Semester semester;
+	
+	@OneToOne
+	private Course course;
+	
+	public DisciplineResult(){
+		
+	}
 	
 	public DisciplineResult(Mention mention, int year, int semester) {
 		this.mention = mention;
-		this.year = year;
-		this.semester = semester;
 	}
 	
 	public long getId() {
@@ -50,21 +47,23 @@ public class DisciplineResult {
 	public void setMention(Mention mention) {
 		this.mention = mention;
 	}
-	
-	public int getYear() {
-		return year;
-	}
-	
-	public void setYear(int year) {
-		this.year = year;
-	}
-	
-	public int getSemester() {
+
+	public Semester getSemester() {
 		return semester;
 	}
-	
-	public void setSemester(int semester) {
+
+	public void setSemester(Semester semester) {
 		this.semester = semester;
 	}
+
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+	
+	
 	
 }
