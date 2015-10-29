@@ -22,6 +22,10 @@ public class DisciplineResult {
 	@OneToOne
 	private Course course;
 	
+	public DisciplineResult(){
+		
+	}
+	
 	public DisciplineResult(Mention mention, int year, int semester) {
 		this.mention = mention;
 	}
