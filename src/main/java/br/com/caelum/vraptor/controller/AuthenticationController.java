@@ -47,7 +47,7 @@ public class AuthenticationController {
 	
 	@Post
 	@Path("/login")
-	public void login(@NotNull @Valid User user){
+	public void login(@NotNull User user){
 	
 		String informedUsername = user.getUsername();
 		String informedPassword = user.getPassword();

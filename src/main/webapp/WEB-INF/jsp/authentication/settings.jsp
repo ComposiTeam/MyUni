@@ -31,8 +31,26 @@
 <script src="js/freelancer.js"></script>
 <script src="jquery-2.1.1.min.js" type="text/javascript" charset="utf-8"></script>
 <meta charset="UTF-8">
-<style>
-</style>
+
+<script>
+function validateRegistrationNumber()
+{
+	var registrationNumber = cadastroMW.registration.value;
+	
+	if(registrationNumber[2] != '/')
+	{
+		alert("O campo Matrícula deve estar preenchido no formato padrão");
+		cadastroMW.registration.focus();
+		return false;
+			
+	}
+	else
+	{
+		document.forms["cadastroMW"].submit();
+	}
+	
+}
+</script>
 </head>
 <body>
 	<jsp:include page="../authentication/navbar-logged.jsp"></jsp:include>
@@ -46,26 +64,26 @@
 			</div>
 			<div class="login_panel">
 				<div class="container">
-					<form action="registerstudent" method="POST">
+					<form name="cadastroMW" action="registerstudent" method="POST">
 						<table>
 							<tr>
-								<td><label for="username-text">Nome: </label></td>
+								<td><label for="username-text">Nome completo: </label></td>
 								<td><input class="register-field" type="text"
-									value="${student.name}" name="student.name" id="name"
+									value="${student.name}" name="student.name" required="required" id="name"
 									placeholder="Entre com o seu nome" /></td>
 
 							</tr>
 							<tr>
 								<td><label for="email-text">Matrícula: </label></td>
 								<td><input class="register-field" type="text"
-									name="student.mwId" id="email" value="${student.mwId}"
+									name="student.mwId" required="required" id="registration" value="${student.mwId}"
 									placeholder="Entre com o seu matricula web" /></td>
 
 							</tr>
 							<tr>
 								<td><label for="password-text">Senha: </label></td>
 								<td><input class="register-field" type="password"
-									name="student.mwPassword" id="password"
+									name="student.mwPassword" required="required" id="password"
 									value="${student.mwPassword}"
 									placeholder="Entre com a sua senha do mw" /></td>
 
@@ -76,8 +94,8 @@
 
 							<tr>
 								<td></td>
-								<td><input class="register-button" type="submit"
-									id="register-button" value="Registrar" /></td>
+								<td><input class="register-button" type="button"
+									id="register-button" value="Registrar" onclick="validateRegistrationNumber()"/></td>
 							</tr>
 						</table>
 					</form>
