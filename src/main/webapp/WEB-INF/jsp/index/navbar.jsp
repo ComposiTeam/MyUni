@@ -1,5 +1,5 @@
-<body id="page-top" class="index">
 
+<body id="page-top" class="index">
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -27,9 +27,9 @@
                         <a href="#register">Registre-se</a>
                     </li>
                     <li>
-                    	<form  action="login" method="POST">
-                        <input class="input-text-login" type="text" name="user.username" id="username-inputType" placeholder="Username" ></input>
-                        <input class="input-text-login" name="user.password" type="password" id="password-inputType" placeholder="Password"></input>
+                    	<form  name="login-form" action="login" method="POST">
+                        <input class="input-text-login" type="text" name="user.username" required="required" id="username-inputType" placeholder="Username" ></input>
+                        <input class="input-text-login" name="user.password" type="password" required="required" id="password-inputType" placeholder="Password"></input>
                         <input class="input-button-login" type="submit" id="login-inputButton" value="Login"></input>
                     	</form>
                     </li>

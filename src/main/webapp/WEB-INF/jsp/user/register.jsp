@@ -12,18 +12,18 @@
             		<table>
 	    				<tr>
 	    					<td><label for="username-text">Usuário: </label></td>
-	    					<td><input class="register-field" type="text" name="user.username" id="username" placeholder="Escolha um nome de usuário"/></td>
+	    					<td><input class="register-field" type="text" name="user.username" id="username" required="required" placeholder="Escolha um nome de usuário"/></td>
 	    					
 	    				</tr>
 	    				<tr>
 	    					<td><label for="password-text">Senha: </label></td>
-	    					<td><input class="register-field" type="password" name="user.password" id="password" placeholder="Escolha uma senha"/></td>
+	    					<td><input class="register-field" type="password" name="user.password" id="password" required="required" placeholder="Escolha uma senha"/></td>
 	    					
 	    				</tr>
 	    				
 	    				<tr>
 		    				<td><label for="email-text">Email: </label></td>
-		    				<td><input class="email-field" type="email" name="user.email" id="email" placeholder="Entre com o email"/></td>
+		    				<td><input class="email-field" type="email" name="user.email" id="email" required="required" placeholder="Entre com o email"/></td>
 		    				
 	    				</tr>
 	    				

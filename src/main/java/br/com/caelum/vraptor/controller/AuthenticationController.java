@@ -1,6 +1,8 @@
 package br.com.caelum.vraptor.controller;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,7 +47,7 @@ public class AuthenticationController {
 	
 	@Post
 	@Path("/login")
-	public void login(User user){
+	public void login(@NotNull @Valid User user){
 	
 		String informedUsername = user.getUsername();
 		String informedPassword = user.getPassword();
@@ -64,7 +66,8 @@ public class AuthenticationController {
 			else
 			{
 				validator.add(new SimpleMessage(LOGIN_ERROR, "Senha ou login não conferem!"));
-				validator.onErrorUsePageOf(IndexController.class).index();
+				validator.onErrorUsePageOf(AuthenticationController.class).loginError();
+				result.redirectTo(AuthenticationController.class).loginError();
 			}
 		}
 		else
@@ -95,7 +98,7 @@ public class AuthenticationController {
 		
 	}
 	
-	@View
+	@Path("/loginError")
 	public void loginError()
 	{
 		
