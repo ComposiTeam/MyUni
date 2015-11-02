@@ -17,16 +17,18 @@ public class Semester {
 	@Column(name="id")
 	private Long id;
 	
-	private int ano;
+	private int year;
 	
 	private int semester;
 
-	public int getAno() {
-		return ano;
+	
+
+	public int getYear() {
+		return year;
 	}
 
-	public void setAno(int ano) {
-		this.ano = ano;
+	public void setYear(int year) {
+		this.year = year;
 	}
 
 	public int getSemester() {

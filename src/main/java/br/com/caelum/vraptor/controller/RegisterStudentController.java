@@ -49,7 +49,7 @@ public class RegisterStudentController {
 		if(student != null && user != null){
 			logger.info("The student will be persisted: " + student.getName() + " " + student.getMwId());
 			student.setUser(user);
-			studentDAO.add(student);
+			studentDAO.create(student);
 			result.redirectTo(AuthenticationController.class).welcome();
 		}else{
 			logger.info("Trying to add a student or user null");

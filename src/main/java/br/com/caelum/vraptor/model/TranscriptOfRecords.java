@@ -11,31 +11,37 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-
-public abstract class TranscriptOfRecords {
+public class TranscriptOfRecords {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="transcriptOfRecordsID")
 	private long id;
 	
-
+	@OneToOne(optional = false)
+	private Student student;
+	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "transResults", joinColumns = @JoinColumn(name = "idTranscriptOfRecords"), 
 			inverseJoinColumns = @JoinColumn(name = "idDisciplineResults"))
 	private List<DisciplineResult> disciplineResults;
 	
-	@NotNull
-	@Size(min = 4, max = 4)//Possible values: 2008 to 2015
+//	@NotNull
+//	@Size(min = 4, max = 4)//Possible values: 2008 to 2015
 	private int yearOfAdmission;
 	
-	@NotNull
-	@Size(min = 1, max = 2) //Possible values: 1 to 16
+//	@NotNull
+//	@Size(min = 1, max = 2) //Possible values: 1 to 16
 	private int numberOfCompletedSemesters;
+	
+	public TranscriptOfRecords(){
+		
+	}
 	
 	public long getId() {
 		return id;
@@ -68,5 +74,15 @@ public abstract class TranscriptOfRecords {
 	public void setNumberOfCompletedSemesters(int numberOfCompletedSemesters) {
 		this.numberOfCompletedSemesters = numberOfCompletedSemesters;
 	}
+
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+	
+	
 	
 }

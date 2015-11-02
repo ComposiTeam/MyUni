@@ -54,7 +54,7 @@ public class TranscriptOfRecordsController {
 	@Post	
 	@Path("/registerTranscript")
 	private void create( TranscriptOfRecords transcriptOfRecords){
-		transcriptService.save(transcriptOfRecords);
+		transcriptService.create(transcriptOfRecords);
 		result.redirectTo(this).showTranscriptOfRecords();
 		validator.onErrorForwardTo(IndexController.class).index();
 	

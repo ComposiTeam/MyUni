@@ -13,11 +13,10 @@ import br.com.caelum.vraptor.dao.DisciplineDAO;
 import br.com.caelum.vraptor.model.Discipline;
 import br.com.compositeam.unb.storage.OfferStorage;
 
-
-
 @RequestScoped
 public class DisciplineService implements OfferStorage {
-	private final static Logger logger = LoggerFactory.getLogger(UserService.class);
+	
+	private final static Logger logger = LoggerFactory.getLogger(DisciplineService.class);
 	
 	private final DisciplineDAO disciplineDAO;
 	
@@ -48,5 +47,9 @@ public class DisciplineService implements OfferStorage {
 			discipline.setName(data.get(key));
 			this.disciplineDAO.create(discipline);
 		}
+	}
+
+	public Discipline findByCode(String disciplineCode) {
+		return this.disciplineDAO.findByCode(disciplineCode);
 	}
 }

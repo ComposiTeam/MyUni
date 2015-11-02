@@ -1,11 +1,20 @@
 package br.com.caelum.vraptor.service;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.persistence.NonUniqueResultException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import br.com.caelum.vraptor.dao.UserDAO;
+import br.com.caelum.vraptor.model.Student;
 import br.com.caelum.vraptor.model.User;
 
+@RequestScoped
 public class UserService {
+	
+	private final static Logger logger = LoggerFactory.getLogger(UserService.class);
 	
 	private UserDAO userDAO;
 	
@@ -14,6 +23,7 @@ public class UserService {
 		this(null);
 	}
 	
+	@Inject
 	public UserService(UserDAO userDAO){
 		this.userDAO = userDAO;
 	}
@@ -76,5 +86,9 @@ public class UserService {
 		}
 	
 		
+	}
+	
+	public Student getStudent(User user){
+		return this.userDAO.getStudent(user);
 	}
 }

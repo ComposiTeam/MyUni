@@ -2,9 +2,12 @@ package br.com.caelum.vraptor.dao;
 
 import java.util.List;
 
+import javax.persistence.NoResultException;
+import javax.persistence.NonUniqueResultException;
 import javax.persistence.Query;
 
 import br.com.caelum.vraptor.model.Discipline;
+import br.com.caelum.vraptor.model.Semester;
 
 public class DisciplineDAO extends AbstractDAO<Discipline> {
 
@@ -31,6 +34,20 @@ public class DisciplineDAO extends AbstractDAO<Discipline> {
 		logger.info("The number of elements returned is " + list.size());
 		
 		return list;
+	}
+
+	public Discipline findByCode(String disciplineCode) {
+		try {
+			Query query = manager.createQuery("SELECT discipline FROM Discipline discipline WHERE discipline.code=:value ");
+			query.setParameter("value", disciplineCode);
+			return (Discipline)query.getSingleResult();
+		} catch (NonUniqueResultException exception){
+			logger.info(exception.getMessage());
+			return null;
+		} catch (NoResultException exception) {
+			logger.info(exception.getMessage());
+			return null;
+		}
 	}
 
 }
