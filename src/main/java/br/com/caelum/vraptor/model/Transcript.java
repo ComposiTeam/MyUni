@@ -16,18 +16,18 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-public class TranscriptOfRecords {
+public class Transcript {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="transcriptOfRecordsID")
+	@Column(name="idTranscript")
 	private long id;
 	
 	@OneToOne(optional = false)
 	private Student student;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "transResults", joinColumns = @JoinColumn(name = "idTranscriptOfRecords"), 
+	@JoinTable(name = "transResults", joinColumns = @JoinColumn(name = "idTranscript"), 
 			inverseJoinColumns = @JoinColumn(name = "idDisciplineResults"))
 	private List<DisciplineResult> disciplineResults;
 	
@@ -39,7 +39,7 @@ public class TranscriptOfRecords {
 //	@Size(min = 1, max = 2) //Possible values: 1 to 16
 	private int numberOfCompletedSemesters;
 	
-	public TranscriptOfRecords(){
+	public Transcript(){
 		
 	}
 	

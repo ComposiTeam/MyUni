@@ -24,6 +24,17 @@ public class DisciplineResult {
 	@OneToOne
 	private Course course;
 	
+	@OneToOne
+	private Transcript transcript;
+	
+	public Transcript getTranscript() {
+		return transcript;
+	}
+
+	public void setTranscript(Transcript transcript) {
+		this.transcript = transcript;
+	}
+
 	public DisciplineResult(){
 		
 	}

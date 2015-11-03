@@ -7,16 +7,18 @@ import org.slf4j.LoggerFactory;
 
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
+import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.manager.UserManager;
 import br.com.caelum.vraptor.model.Student;
-import br.com.caelum.vraptor.model.TranscriptOfRecords;
+import br.com.caelum.vraptor.model.Transcript;
 import br.com.caelum.vraptor.model.User;
 import br.com.caelum.vraptor.service.DisciplineService;
 import br.com.caelum.vraptor.service.StudentService;
 import br.com.caelum.vraptor.service.TranscriptOfRecordsService;
 import br.com.caelum.vraptor.service.UserService;
 import br.com.caelum.vraptor.validator.Validator;
+import br.com.compositeam.unb.TranscriptPage;
 
 @Controller
 public class TranscriptController {
@@ -48,8 +50,8 @@ public class TranscriptController {
 	}
 	
 	@Get("transcript/mwtranscript")
-	public void getMWTranscript(){
-		TranscriptOfRecords trans = null;
+	public void MWTranscript(){
+		Transcript trans = null;
 		if(userManager.isLogged()){
 			User user = userManager.getUserLogged();
 			logger.info("User: " + user.getUsername());
@@ -61,19 +63,24 @@ public class TranscriptController {
 			}
 			trans = studentService.getTranscript(student);
 			if(trans == null){
-				trans = new TranscriptOfRecords();
+				trans = new Transcript();
 				trans.setStudent(student);
 				transcriptService.create(trans);
 				logger.info("Id Transcript" + trans.getId());
 			}
+			this.transcriptService.setTranscript(trans);
+			TranscriptPage page = new TranscriptPage(student.getMwId(), student.getMwPassword(),this.transcriptService);
+			page.extractData();
+			page.save();
+			result.redirectTo(TranscriptController.class).show();
 		}else{
 			result.redirectTo(IndexController.class).index();
 		}
 	}
 	
-	@Get("transcript/show")
-	public TranscriptOfRecords show(){
-		TranscriptOfRecords trans = null;
+	@Path("transcript/show")
+	public Transcript show(){
+		Transcript trans = null;
 		if(userManager.isLogged()){
 			User user = userManager.getUserLogged();
 			logger.info("User: " + user.getUsername());
@@ -83,10 +90,12 @@ public class TranscriptController {
 			}else{
 				logger.info("Student:" + student.getName());
 			}
+			trans = studentService.getTranscript(student);
 			
 		}else{
 			result.redirectTo(IndexController.class).index();
 		}
+		logger.info("It is going to return a transcriptofrecords: " + trans.getId() );
 		return trans;
 	}
 

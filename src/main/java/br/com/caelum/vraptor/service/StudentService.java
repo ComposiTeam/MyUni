@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import br.com.caelum.vraptor.dao.StudentDAO;
 import br.com.caelum.vraptor.model.Student;
-import br.com.caelum.vraptor.model.TranscriptOfRecords;
+import br.com.caelum.vraptor.model.Transcript;
 
 @RequestScoped
 public class StudentService {
@@ -27,7 +27,7 @@ public class StudentService {
 		this.studentDAO = studentDAO;
 	}
 	
-	public TranscriptOfRecords getTranscript(Student student){
+	public Transcript getTranscript(Student student){
 		return this.studentDAO.getTranscript(student);
 	}
 

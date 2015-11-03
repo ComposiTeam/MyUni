@@ -33,6 +33,9 @@
                     	<a href="settings">Conta</a>
                     </li>
                     <li class="page-scroll">
+                    	<a href="transcript/mwtranscript">Historico MW</a>
+                    </li>
+                    <li class="page-scroll">
                     	<div class="logged-info">${manager.getUserLogged().getUsername() } | 
 						<form action="logout">
 						<input type="submit" value="Sair"/>

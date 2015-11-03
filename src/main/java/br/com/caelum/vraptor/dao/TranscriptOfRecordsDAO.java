@@ -12,7 +12,7 @@ import javax.persistence.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import br.com.caelum.vraptor.model.TranscriptOfRecords;
+import br.com.caelum.vraptor.model.Transcript;
 
 @RequestScoped
 public class TranscriptOfRecordsDAO {
@@ -35,28 +35,28 @@ public class TranscriptOfRecordsDAO {
 	}
 	
 	
-	public void create(TranscriptOfRecords entity) {
+	public void create(Transcript entity) {
 		logger.info("Creating the object Transcript of Records.");
 		manager.persist(entity);
 	}
 
 	
-	public boolean update(TranscriptOfRecords entity) {
+	public boolean update(Transcript entity) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	
-	public boolean destroy(TranscriptOfRecords entity) {
+	public boolean destroy(Transcript entity) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	
-	public TranscriptOfRecords getEntityByField(String field, Object object) {
+	public Transcript getEntityByField(String field, Object object) {
 		logger.debug("field." + field + "=" +object );
 		
-		String sqlQuery = "SELECT transcriptOfRecords FROM "+ TranscriptOfRecords.class.getName() +" transcriptOfRecords"
+		String sqlQuery = "SELECT transcriptOfRecords FROM "+ Transcript.class.getName() +" transcriptOfRecords"
 				+ " WHERE transcriptOfRecords." + object + "=:value";
 		
 		logger.info("The created sql is: " + sqlQuery);
@@ -64,7 +64,7 @@ public class TranscriptOfRecordsDAO {
 		try {
 			Query query = manager.createQuery(sqlQuery);
 			query.setParameter("object", object);
-			return (TranscriptOfRecords) query.getSingleResult();
+			return (Transcript) query.getSingleResult();
 		} catch (NonUniqueResultException exception){
 			throw new NonUniqueResultException();
 		} catch (NoResultException exception) {
@@ -74,7 +74,7 @@ public class TranscriptOfRecordsDAO {
 	}
 
 
-	public TranscriptOfRecords searchByID(Long id) {
+	public Transcript searchByID(Long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

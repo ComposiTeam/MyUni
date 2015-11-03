@@ -8,7 +8,7 @@ import javax.persistence.NonUniqueResultException;
 import javax.persistence.Query;
 
 import br.com.caelum.vraptor.model.Student;
-import br.com.caelum.vraptor.model.TranscriptOfRecords;
+import br.com.caelum.vraptor.model.Transcript;
 
 @RequestScoped
 public class StudentDAO extends AbstractDAO<Student> {
@@ -31,11 +31,11 @@ public class StudentDAO extends AbstractDAO<Student> {
 		return null;
 	}
 	
-	public TranscriptOfRecords getTranscript(Student student){
+	public Transcript getTranscript(Student student){
 		try {
-			Query query = manager.createQuery("select transcriptofrecords FROM TranscriptOfRecords transcriptofrecords WHERE transcriptofrecords.student =:value ");
+			Query query = manager.createQuery("select transcript FROM Transcript transcript WHERE transcript.student =:value ");
 			query.setParameter("value", student);
-			return (TranscriptOfRecords)query.getSingleResult();
+			return (Transcript)query.getSingleResult();
 		} catch (NonUniqueResultException exception){
 			logger.info(exception.getMessage());
 			return null;

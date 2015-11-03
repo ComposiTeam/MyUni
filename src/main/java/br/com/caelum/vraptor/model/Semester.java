@@ -10,7 +10,7 @@ public class Semester {
 	
 	public static final int FIRST_SEMESTER = 1;
 	
-	public static final int SECOND_SEMESTER = 1;
+	public static final int SECOND_SEMESTER = 2;
 	
 	@Id
 	@GeneratedValue
@@ -39,8 +39,8 @@ public class Semester {
 		if(semester == FIRST_SEMESTER || semester == SECOND_SEMESTER){
 			this.semester = semester;
 		}else{
-			throw new NullPointerException("Semester is wrong");
-		}
+			throw new NullPointerException("Semester is wrong. It should just be 1 or 2");
+		} 
 	}
 
 	public Long getId() {

@@ -5,7 +5,7 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.annotation.View;
-import br.com.caelum.vraptor.model.TranscriptOfRecords;
+import br.com.caelum.vraptor.model.Transcript;
 import br.com.caelum.vraptor.service.TranscriptOfRecordsService;
 import br.com.caelum.vraptor.validator.Validator;
 
@@ -53,7 +53,7 @@ public class TranscriptOfRecordsController {
 	
 	@Post	
 	@Path("/registerTranscript")
-	private void create( TranscriptOfRecords transcriptOfRecords){
+	private void create( Transcript transcriptOfRecords){
 		transcriptService.create(transcriptOfRecords);
 		result.redirectTo(this).showTranscriptOfRecords();
 		validator.onErrorForwardTo(IndexController.class).index();
