@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -24,7 +25,7 @@ public class DisciplineResult {
 	@OneToOne
 	private Course course;
 	
-	@OneToOne
+	@ManyToOne
 	private Transcript transcript;
 	
 	public Transcript getTranscript() {

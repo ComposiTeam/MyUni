@@ -1,10 +1,13 @@
 package br.com.caelum.vraptor.service;
 
+import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import br.com.caelum.vraptor.dao.DisciplineResultDAO;
 import br.com.caelum.vraptor.model.DisciplineResult;
+import br.com.caelum.vraptor.model.Transcript;
 
 @RequestScoped
 public class DisciplineResultService {
@@ -22,6 +25,10 @@ public class DisciplineResultService {
 	
 	public void create(DisciplineResult disciplineResult){
 		this.disciplineResultDAO.create(disciplineResult);
+	}
+	
+	public List<DisciplineResult> list(Transcript transcript){
+		return this.disciplineResultDAO.list(transcript);
 	}
 
 }

@@ -20,10 +20,10 @@
 			<td>${transcript.student.mwId}</td>
 			<td>${transcript.student.name}</td>
 		</tr>
-		<c:forEach items="${transcript.disciplineResults}" var="disciplineResults" >
+		<c:forEach items="${transcript.disciplineResults}" var="results" >
 			<tr>
-				<td>${disciplineResults.course.discipline.name}</td>
-				<td>${disciplineResults.mention.abreviation}</td>
+				<td>${results.course.discipline.name}</td>
+				<td>${results.mention.abreviation}</td>
 			</tr>
 		</c:forEach>
 	</table>

@@ -1,5 +1,7 @@
 package br.com.caelum.vraptor.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
@@ -10,9 +12,11 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.manager.UserManager;
+import br.com.caelum.vraptor.model.DisciplineResult;
 import br.com.caelum.vraptor.model.Student;
 import br.com.caelum.vraptor.model.Transcript;
 import br.com.caelum.vraptor.model.User;
+import br.com.caelum.vraptor.service.DisciplineResultService;
 import br.com.caelum.vraptor.service.DisciplineService;
 import br.com.caelum.vraptor.service.StudentService;
 import br.com.caelum.vraptor.service.TranscriptOfRecordsService;
@@ -31,14 +35,16 @@ public class TranscriptController {
 	private StudentService studentService;
 	private TranscriptOfRecordsService transcriptService;
 	private DisciplineService disciplineService;
+	private DisciplineResultService disciplineResultService;
 	
 	public TranscriptController(){
-		this(null,null,null,null,null,null,null);
+		this(null,null,null,null,null,null,null,null);
 	}
 	
 	@Inject
 	public TranscriptController(UserManager userManager,UserService userService, StudentService studentService, Result result,
-			TranscriptOfRecordsService transcriptService, DisciplineService disciplineService, Validator validator) {
+			TranscriptOfRecordsService transcriptService, DisciplineService disciplineService, 
+			DisciplineResultService disciplineResultService,Validator validator) {
 		super();
 		this.userManager = userManager;
 		this.result = result;
@@ -47,6 +53,7 @@ public class TranscriptController {
 		this.studentService = studentService;
 		this.transcriptService = transcriptService;
 		this.disciplineService = disciplineService;
+		this.disciplineResultService = disciplineResultService;
 	}
 	
 	@Get("transcript/mwtranscript")
@@ -96,6 +103,12 @@ public class TranscriptController {
 			result.redirectTo(IndexController.class).index();
 		}
 		logger.info("It is going to return a transcriptofrecords: " + trans.getId() );
+		if(trans.getDisciplineResults() == null || trans.getDisciplineResults().size() == 0){
+			logger.info("The list is null");
+			List<DisciplineResult> list = disciplineResultService.list(trans);
+			trans.setDisciplineResults(list);
+			
+		}
 		return trans;
 	}
 
