@@ -14,6 +14,7 @@ public class Discipline {
 	@Column(name="id")
 	private Long id;
 	
+	@Column(unique = true)
 	private String code;
 	
 	private String name;

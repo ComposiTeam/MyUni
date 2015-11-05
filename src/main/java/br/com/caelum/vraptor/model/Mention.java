@@ -13,8 +13,12 @@ public class Mention {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="addressID")
 	private long id;
+	
 	private String description;
+	
+	@Column(unique = true)
 	private String abreviation;
+	
 	private int weight;
 	
 	public Mention(){

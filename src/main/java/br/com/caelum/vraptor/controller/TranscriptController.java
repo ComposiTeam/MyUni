@@ -19,10 +19,11 @@ import br.com.caelum.vraptor.model.User;
 import br.com.caelum.vraptor.service.DisciplineResultService;
 import br.com.caelum.vraptor.service.DisciplineService;
 import br.com.caelum.vraptor.service.StudentService;
-import br.com.caelum.vraptor.service.TranscriptOfRecordsService;
+import br.com.caelum.vraptor.service.TranscriptService;
 import br.com.caelum.vraptor.service.UserService;
 import br.com.caelum.vraptor.validator.Validator;
 import br.com.compositeam.unb.TranscriptPage;
+import br.com.caelum.vraptor.manager.TranscriptExtractManager;
 
 @Controller
 public class TranscriptController {
@@ -33,18 +34,19 @@ public class TranscriptController {
 	private Validator validator;
 	private UserService userService;
 	private StudentService studentService;
-	private TranscriptOfRecordsService transcriptService;
+	private TranscriptService transcriptService;
 	private DisciplineService disciplineService;
 	private DisciplineResultService disciplineResultService;
+	private TranscriptExtractManager transcriptExtractManager;
 	
 	public TranscriptController(){
-		this(null,null,null,null,null,null,null,null);
+		this(null,null,null,null,null,null,null,null,null);
 	}
 	
 	@Inject
 	public TranscriptController(UserManager userManager,UserService userService, StudentService studentService, Result result,
-			TranscriptOfRecordsService transcriptService, DisciplineService disciplineService, 
-			DisciplineResultService disciplineResultService,Validator validator) {
+			TranscriptService transcriptService, DisciplineService disciplineService, 
+			DisciplineResultService disciplineResultService,TranscriptExtractManager transcriptExtractManager, Validator validator) {
 		super();
 		this.userManager = userManager;
 		this.result = result;
@@ -54,6 +56,7 @@ public class TranscriptController {
 		this.transcriptService = transcriptService;
 		this.disciplineService = disciplineService;
 		this.disciplineResultService = disciplineResultService;
+		this.transcriptExtractManager = transcriptExtractManager; 
 	}
 	
 	@Get("transcript/mwtranscript")
@@ -75,8 +78,8 @@ public class TranscriptController {
 				transcriptService.create(trans);
 				logger.info("Id Transcript" + trans.getId());
 			}
-			this.transcriptService.setTranscript(trans);
-			TranscriptPage page = new TranscriptPage(student.getMwId(), student.getMwPassword(),this.transcriptService);
+			transcriptExtractManager.setTranscript(trans);
+			TranscriptPage page = new TranscriptPage(student.getMwId(), student.getMwPassword(),this.transcriptExtractManager);
 			page.extractData();
 			page.save();
 			result.redirectTo(TranscriptController.class).show();
@@ -98,7 +101,12 @@ public class TranscriptController {
 				logger.info("Student:" + student.getName());
 			}
 			trans = studentService.getTranscript(student);
-			
+			if(trans == null){
+				trans = new Transcript();
+				trans.setStudent(student);
+				transcriptService.create(trans);
+				logger.info("Id Transcript" + trans.getId());
+			}
 		}else{
 			result.redirectTo(IndexController.class).index();
 		}

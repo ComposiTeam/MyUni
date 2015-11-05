@@ -23,4 +23,8 @@ public class MentionService {
 	public Mention findByAbreviation(String abreviation){
 		return this.mentionDAO.findByAbreviation(abreviation);
 	}
+	
+	public void create(Mention mention){
+		this.mentionDAO.create(mention);
+	}
 }

@@ -3,22 +3,28 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>test</title>
+<title>Histórico do Aluno</title>
 </head>
 <body>
 	<table>
 		<tr>
-			<td>Histórico</td>
+			<td colspan="2">Histórico</td>
 		</tr>
 		<tr>
-			<td>${transcript.id}</td>
+			<td colspan="2">Dados do Aluno</td>
 		</tr>
 		<tr>
-			<td>${transcript.student.mwId}</td>
 			<td>${transcript.student.name}</td>
+			<td>${transcript.student.mwId}</td>
+		</tr>
+		<tr>
+			<td colspan="2">Disciplinas</td>
+		</tr>
+		<tr>
+			<td >Disciplina</td>
+			<td>Mencão</td>
 		</tr>
 		<c:forEach items="${transcript.disciplineResults}" var="results" >
 			<tr>
@@ -27,6 +33,5 @@
 			</tr>
 		</c:forEach>
 	</table>
-
 </body>
 </html>
