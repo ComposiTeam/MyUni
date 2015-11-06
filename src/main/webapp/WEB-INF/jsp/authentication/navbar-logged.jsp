@@ -34,8 +34,11 @@
                     </li>
                     <li class="page-scroll">
                     	<div class="logged-info">${manager.getUserLogged().getUsername() } | 
-
-                    	<a href="<c:url value='/logout'" >Sair</a></div>
+						<form action="logout">
+						<input type="submit" value="Sair"/>
+						</form>
+						
+                    	</div>
 
                     </li>
                 </ul>

@@ -3,6 +3,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class User {
@@ -12,8 +14,11 @@ public class User {
 	@Column(name="id")
 	private Long id;
 	
+	@NotNull @Size(min=5, max=50)
 	private String username;
+	@NotNull @Size(min=5, max=50)
 	private String password;
+	
 	private String email;
 	
 	public String getUsername() {
