@@ -3,7 +3,7 @@
 <br></br>
 <br></br>
 	<div class="title">
-    	 <center><img src="images/gradplanner.png" alt="GradPlanner"> </center>
+   	 	<img src="images/gradplanner.png" alt="GradPlanner">
     </div>
   	<div class="jumbotron">
     	<div class="container">
