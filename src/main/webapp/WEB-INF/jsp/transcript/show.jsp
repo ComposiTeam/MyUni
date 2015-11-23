@@ -20,7 +20,7 @@
 </head>
 <body>
 	<%@ include file="/WEB-INF/layouts/navbar-logged.jspf" %>
-	<div class="container">
+	<div class="container content">
 	
 		<h1>Histórico</h1>
 		<ul class="list-group">
