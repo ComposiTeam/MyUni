@@ -5,6 +5,8 @@ import javax.inject.Inject;
 
 import br.com.caelum.vraptor.dao.CourseDAO;
 import br.com.caelum.vraptor.model.Course;
+import br.com.caelum.vraptor.model.Discipline;
+import br.com.caelum.vraptor.model.Semester;
 
 @RequestScoped
 public class CourseService {
@@ -22,5 +24,9 @@ public class CourseService {
 	
 	public void create(Course course){
 		this.courseDAO.create(course);
+	}
+	
+	public Course findCourse(Semester semester, Discipline discipline){
+		return this.courseDAO.findCourse(semester, discipline);
 	}
 }
