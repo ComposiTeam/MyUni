@@ -11,6 +11,8 @@ import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.manager.OfferExtractManager;
+import br.com.caelum.vraptor.manager.TranscriptExtractManager;
 import br.com.caelum.vraptor.manager.UserManager;
 import br.com.caelum.vraptor.model.Discipline;
 import br.com.caelum.vraptor.service.DisciplineService;
@@ -25,19 +27,21 @@ public class DisciplineController {
 	private final DisciplineService disciplineService;
 	private final Result result;
 	private Validator validator;
+	private OfferExtractManager offer;
 	
 	public DisciplineController(){
-		this(null,null,null,null);
+		this(null,null,null,null,null);
 	}
 	
 	@Inject
 	public DisciplineController(UserManager userManager, DisciplineService disciplineDAO, Result result,
-			Validator validator) {
+			OfferExtractManager offer,Validator validator) {
 		super();
 		this.userManager = userManager;
 		this.result = result;
 		this.disciplineService = disciplineDAO;
 		this.validator = validator;
+		this.offer = offer;
 	}
 	
 	@Get("/discipline")
@@ -80,6 +84,12 @@ public class DisciplineController {
 		OfferPage offerPage = new OfferPage("650",this.disciplineService);
 		offerPage.extractData();
 		offerPage.save();
+	}
+	
+	public void offer(){
+		offer.getData();
+		
+		
 	}
 	
 	

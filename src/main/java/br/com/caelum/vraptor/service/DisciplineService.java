@@ -42,10 +42,13 @@ public class DisciplineService implements OfferStorage {
 	@Override
 	public void save(Map<String, String> data) {
 		for(String key : data.keySet()){
-			Discipline discipline = new Discipline();
-			discipline.setCode(key);
-			discipline.setName(data.get(key));
-			this.disciplineDAO.create(discipline);
+			Discipline discipline = this.findByCode(key);
+			if(discipline == null){
+				discipline = new Discipline();
+				discipline.setCode(key);
+				discipline.setName(data.get(key));
+				this.disciplineDAO.create(discipline);
+			}
 		}
 	}
 

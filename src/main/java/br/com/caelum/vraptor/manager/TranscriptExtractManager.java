@@ -8,12 +8,13 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import br.com.caelum.vraptor.dao.TranscriptOfRecordsDAO;
 import br.com.caelum.vraptor.model.Course;
 import br.com.caelum.vraptor.model.Discipline;
 import br.com.caelum.vraptor.model.DisciplineResult;
 import br.com.caelum.vraptor.model.Mention;
+import br.com.caelum.vraptor.model.Professor;
 import br.com.caelum.vraptor.model.Semester;
+import br.com.caelum.vraptor.model.Time;
 import br.com.caelum.vraptor.model.Transcript;
 import br.com.caelum.vraptor.service.CourseService;
 import br.com.caelum.vraptor.service.DisciplineResultService;
@@ -26,7 +27,7 @@ import br.com.compositeam.unb.storage.TranscriptStorage;
 @RequestScoped
 public class TranscriptExtractManager implements TranscriptStorage {
 	
-	private static final Logger logger = LoggerFactory.getLogger(TranscriptService.class);
+	private static final Logger logger = LoggerFactory.getLogger(TranscriptExtractManager.class);
 	private DisciplineService disciplineService;
 	private SemesterService semesterService;
 	private CourseService courseService;
@@ -74,8 +75,7 @@ public class TranscriptExtractManager implements TranscriptStorage {
 					dis = getDiscipline(dataPiace[i], dataPiace[i+1]);
 					logger.info("Finish the discipline process");
 					logger.info("Course process");
-					Course course = new Course();
-					course.setDiscipline(dis);
+					Course course = getCourse(semester, dis);
 					this.courseService.create(course);
 					logger.info("Finished the course process");
 					logger.info("Mention process");
@@ -112,6 +112,13 @@ public class TranscriptExtractManager implements TranscriptStorage {
 		}else{
 			this.disciplineResultService.create(result);
 		}
+	}
+	
+	private Course getCourse(Semester semester, Discipline discipline){
+		Course course = new Course();
+		course.setDiscipline(discipline);
+		course.setSemester(semester);
+		return course;
 	}
 	private String disciplineCode(String text){
 		String code = text.split("-")[1];
