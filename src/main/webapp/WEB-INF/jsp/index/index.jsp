@@ -34,7 +34,7 @@
             </div>
         </div>
         <div class="row">
-	        <div class="col-md-6 col-md-offset-3">
+	        <div class="col-md-4 col-md-offset-4">
 	        	<form action="register" method="POST">
 					<input class="form-control" type="text" name="user.username" id="username" 
 						required="required" placeholder="Escolha um nome de usuário"/>
