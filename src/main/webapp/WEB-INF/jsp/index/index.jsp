@@ -18,6 +18,13 @@
 </head>
  <body>
   <%@ include file="navbar.jsp" %>
+  	<div class="container error-box">
+	  	<ul class="list-group">
+		  	<c:forEach var="error" items="${errors}">
+		    	<li class="list-group-item">${error.message}</li>
+			</c:forEach>
+		</ul>
+  	</div>
 	<div class="title">
 		<img src="images/gradplanner.png" alt="GradPlanner">
 	</div>
