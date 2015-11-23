@@ -1,5 +1,7 @@
 package br.com.caelum.vraptor.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,9 +17,9 @@ public class Time {
 	
 	private String day;
 	
-	private Time begin;
+	private String begin;
 	
-	private Time end;
+	private String end;
 
 	public Long getId() {
 		return id;
@@ -35,20 +37,32 @@ public class Time {
 		this.day = day;
 	}
 
-	public Time getBegin() {
+	public String getBegin() {
 		return begin;
 	}
 
-	public void setBegin(Time begin) {
+	public void setBegin(String begin) {
 		this.begin = begin;
 	}
 
-	public Time getEnd() {
+	public String getEnd() {
 		return end;
 	}
 
-	public void setEnd(Time end) {
+	public void setEnd(String end) {
 		this.end = end;
+	}
+
+	public static Time getTime(String convert){
+		convert = convert.replaceAll("\\W{2}", " ");
+		System.out.println(convert);
+		String[] pieces = convert.split(" ");
+		System.out.println(pieces.length);
+		Time time = new Time();
+		time.setDay(pieces[0]);
+		time.setBegin(pieces[1]);
+		time.setEnd(pieces[3]);
+		return time;
 	}
 	
 	

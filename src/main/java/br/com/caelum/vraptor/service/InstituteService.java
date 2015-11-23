@@ -18,7 +18,7 @@ public class InstituteService {
 		this(null);
 	}
 	
-	private void create(Institute institute){
+	public void create(Institute institute){
 		this.instituteDAO.create(institute);
 	}
 
