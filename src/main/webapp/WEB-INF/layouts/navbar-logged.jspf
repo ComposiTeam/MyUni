@@ -28,7 +28,7 @@
                     	<a href="feedbacks">Feedbacks</a>
                     </li>
                     <li class="page-scroll">
-                    	<a href="settings">Conta</a>
+                    	<a href="<c:url value='/settings'/>">Conta</a>
                     </li>
                     <li class="page-scroll">
                     	<a href="transcript/mwtranscript">Historico MW</a>

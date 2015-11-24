@@ -26,7 +26,7 @@ public class SemesterDAO extends AbstractDAO<Semester> {
 
 	public boolean exists(int semester, int year) {
 		try {
-			Query query = manager.createQuery("SELECT s FROM Semester s WHERE s.year=:value AND s.semester=:val ");
+			Query query = manager.createQuery("SELECT s FROM Semester s WHERE s.year=:value AND s.part=:val ");
 			query.setParameter("value", year);
 			query.setParameter("val", semester);
 			if(query.getResultList().size() == 1){
@@ -43,7 +43,7 @@ public class SemesterDAO extends AbstractDAO<Semester> {
 	
 	public Semester find(int semester, int year){
 		try {
-			Query query = manager.createQuery("select semester FROM Semester semester WHERE semester.year=:value and semester.semester=:val ");
+			Query query = manager.createQuery("select semester FROM Semester semester WHERE semester.year=:value and semester.part=:val ");
 			query.setParameter("value", year);
 			query.setParameter("val", semester);
 			return (Semester)query.getSingleResult();
