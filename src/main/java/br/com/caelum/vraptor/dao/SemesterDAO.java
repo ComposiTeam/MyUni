@@ -6,9 +6,9 @@ import javax.persistence.NoResultException;
 import javax.persistence.NonUniqueResultException;
 import javax.persistence.Query;
 
-import br.com.caelum.vraptor.model.Semester;
 import br.com.caelum.vraptor.model.Student;
 import br.com.caelum.vraptor.model.Transcript;
+import br.com.caelum.vraptor.model.coursetime.Semester;
 
 public class SemesterDAO extends AbstractDAO<Semester> {
 

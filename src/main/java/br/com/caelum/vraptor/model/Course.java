@@ -12,6 +12,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
+
+import br.com.caelum.vraptor.model.coursetime.Semester;
 @Entity
 public class Course {
 	

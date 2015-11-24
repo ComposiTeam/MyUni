@@ -7,7 +7,7 @@ import javax.persistence.Query;
 
 import br.com.caelum.vraptor.model.Course;
 import br.com.caelum.vraptor.model.Discipline;
-import br.com.caelum.vraptor.model.Semester;
+import br.com.caelum.vraptor.model.coursetime.Semester;
 
 public class CourseDAO extends AbstractDAO<Course> {
 

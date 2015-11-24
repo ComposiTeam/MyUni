@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import br.com.caelum.vraptor.model.coursetime.Semester;
+
 @Entity
 public class DisciplineResult {
 

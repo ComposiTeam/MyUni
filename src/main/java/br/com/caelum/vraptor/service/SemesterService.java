@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import br.com.caelum.vraptor.dao.DisciplineDAO;
 import br.com.caelum.vraptor.dao.SemesterDAO;
-import br.com.caelum.vraptor.model.Semester;
+import br.com.caelum.vraptor.model.coursetime.Semester;
 
 @RequestScoped
 public class SemesterService {
