@@ -11,7 +11,7 @@ import javax.persistence.OneToOne;
 import br.com.caelum.vraptor.model.coursetime.Semester;
 
 @Entity
-public class DisciplineResult {
+public class AcademicResult {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -38,11 +38,11 @@ public class DisciplineResult {
 		this.transcript = transcript;
 	}
 
-	public DisciplineResult(){
+	public AcademicResult(){
 		
 	}
 	
-	public DisciplineResult(Mention mention, int year, int semester) {
+	public AcademicResult(Mention mention, int year, int semester) {
 		this.mention = mention;
 	}
 	

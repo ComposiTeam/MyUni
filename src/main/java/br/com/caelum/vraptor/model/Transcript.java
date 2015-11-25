@@ -28,7 +28,7 @@ public class Transcript {
 	private Student student;
 	
 	@OneToMany(mappedBy="transcript")
-	private List<DisciplineResult> disciplineResults;
+	private List<AcademicResult> results;
 	
 //	@NotNull
 //	@Size(min = 4, max = 4)//Possible values: 2008 to 2015
@@ -50,12 +50,12 @@ public class Transcript {
 		this.id = id;
 	}
 
-	public List<DisciplineResult> getDisciplineResults() {
-		return disciplineResults;
+	public List<AcademicResult> getResults() {
+		return results;
 	}
 
-	public void setDisciplineResults(List<DisciplineResult> disciplineResults) {
-		this.disciplineResults = disciplineResults;
+	public void setResults(List<AcademicResult> resulsts) {
+		this.results = resulsts;
 	}
 
 	public int getYearOfAdmission() {

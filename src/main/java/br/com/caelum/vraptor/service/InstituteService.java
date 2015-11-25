@@ -3,7 +3,7 @@ package br.com.caelum.vraptor.service;
 import javax.inject.Inject;
 
 import br.com.caelum.vraptor.dao.InstituteDAO;
-import br.com.caelum.vraptor.model.Institute;
+import br.com.caelum.vraptor.model.unb.Institute;
 
 public class InstituteService {
 	

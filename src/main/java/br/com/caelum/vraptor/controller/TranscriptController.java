@@ -11,12 +11,13 @@ import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.controller.IndexController;
 import br.com.caelum.vraptor.manager.UserManager;
-import br.com.caelum.vraptor.model.DisciplineResult;
+import br.com.caelum.vraptor.model.AcademicResult;
 import br.com.caelum.vraptor.model.Student;
 import br.com.caelum.vraptor.model.Transcript;
 import br.com.caelum.vraptor.model.User;
-import br.com.caelum.vraptor.service.DisciplineResultService;
+import br.com.caelum.vraptor.service.AcademicResultService;
 import br.com.caelum.vraptor.service.DisciplineService;
 import br.com.caelum.vraptor.service.StudentService;
 import br.com.caelum.vraptor.service.TranscriptService;
@@ -36,7 +37,7 @@ public class TranscriptController {
 	private StudentService studentService;
 	private TranscriptService transcriptService;
 	private DisciplineService disciplineService;
-	private DisciplineResultService disciplineResultService;
+	private AcademicResultService academicResultService;
 	private TranscriptExtractManager transcriptExtractManager;
 	
 	public TranscriptController(){
@@ -46,7 +47,7 @@ public class TranscriptController {
 	@Inject
 	public TranscriptController(UserManager userManager,UserService userService, StudentService studentService, Result result,
 			TranscriptService transcriptService, DisciplineService disciplineService, 
-			DisciplineResultService disciplineResultService,TranscriptExtractManager transcriptExtractManager, Validator validator) {
+			AcademicResultService resultService,TranscriptExtractManager transcriptExtractManager, Validator validator) {
 		super();
 		this.userManager = userManager;
 		this.result = result;
@@ -55,7 +56,7 @@ public class TranscriptController {
 		this.studentService = studentService;
 		this.transcriptService = transcriptService;
 		this.disciplineService = disciplineService;
-		this.disciplineResultService = disciplineResultService;
+		this.academicResultService = resultService;
 		this.transcriptExtractManager = transcriptExtractManager; 
 	}
 	
@@ -111,10 +112,10 @@ public class TranscriptController {
 			result.redirectTo(IndexController.class).index();
 		}
 		logger.info("It is going to return a transcriptofrecords: " + trans.getId() );
-		if(trans.getDisciplineResults() == null || trans.getDisciplineResults().size() == 0){
+		if(trans.getResults() == null || trans.getResults().size() == 0){
 			logger.info("The list is null");
-			List<DisciplineResult> list = disciplineResultService.list(trans);
-			trans.setDisciplineResults(list);
+			List<AcademicResult> list = academicResultService.list(trans);
+			trans.setResults(list);
 			
 		}
 		return trans;

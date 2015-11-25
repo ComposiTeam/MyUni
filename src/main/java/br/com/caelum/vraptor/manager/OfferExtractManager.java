@@ -11,11 +11,11 @@ import org.slf4j.LoggerFactory;
 
 import br.com.caelum.vraptor.model.Course;
 import br.com.caelum.vraptor.model.Discipline;
-import br.com.caelum.vraptor.model.Institute;
 import br.com.caelum.vraptor.model.Professor;
 import br.com.caelum.vraptor.model.Time;
 import br.com.caelum.vraptor.model.User;
 import br.com.caelum.vraptor.model.coursetime.Semester;
+import br.com.caelum.vraptor.model.unb.Institute;
 import br.com.caelum.vraptor.service.CourseService;
 import br.com.caelum.vraptor.service.DisciplineService;
 import br.com.caelum.vraptor.service.InstituteService;

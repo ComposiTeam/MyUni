@@ -4,17 +4,17 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 @Entity
-public class Institute {
-	
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public abstract class Institution {
+
 	@Id
 	@GeneratedValue
 	@Column(name="id")
 	private Long id;
-	
-	@Column(unique = true)
-	private String code;
 	
 	private String name;
 
@@ -26,14 +26,6 @@ public class Institute {
 		this.id = id;
 	}
 
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -43,5 +35,4 @@ public class Institute {
 	}
 	
 	
-
 }

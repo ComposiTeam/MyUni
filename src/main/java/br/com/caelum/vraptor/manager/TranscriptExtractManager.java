@@ -10,14 +10,14 @@ import org.slf4j.LoggerFactory;
 
 import br.com.caelum.vraptor.model.Course;
 import br.com.caelum.vraptor.model.Discipline;
-import br.com.caelum.vraptor.model.DisciplineResult;
+import br.com.caelum.vraptor.model.AcademicResult;
 import br.com.caelum.vraptor.model.Mention;
 import br.com.caelum.vraptor.model.Professor;
 import br.com.caelum.vraptor.model.Time;
 import br.com.caelum.vraptor.model.Transcript;
 import br.com.caelum.vraptor.model.coursetime.Semester;
 import br.com.caelum.vraptor.service.CourseService;
-import br.com.caelum.vraptor.service.DisciplineResultService;
+import br.com.caelum.vraptor.service.AcademicResultService;
 import br.com.caelum.vraptor.service.DisciplineService;
 import br.com.caelum.vraptor.service.MentionService;
 import br.com.caelum.vraptor.service.SemesterService;
@@ -33,7 +33,7 @@ public class TranscriptExtractManager implements TranscriptStorage {
 	private CourseService courseService;
 	private MentionService mentionService;
 	private Transcript transcript;
-	private DisciplineResultService disciplineResultService;
+	private AcademicResultService disciplineResultService;
 	
 	public TranscriptExtractManager() {
 		this(null,null,null,null,null);
@@ -41,7 +41,7 @@ public class TranscriptExtractManager implements TranscriptStorage {
 	
 	@Inject
 	public TranscriptExtractManager(DisciplineService disciplineService,
-			SemesterService semesterService, CourseService courseService, MentionService mentionService,DisciplineResultService disciplineResultService) {
+			SemesterService semesterService, CourseService courseService, MentionService mentionService,AcademicResultService disciplineResultService) {
 		this.disciplineService = disciplineService;
 		this.semesterService = semesterService;
 		this.courseService = courseService;
@@ -82,7 +82,7 @@ public class TranscriptExtractManager implements TranscriptStorage {
 					Mention mention = getMention(dataPiace[i+2]);
 					logger.info("Finished Mention process");
 					logger.info("Result process");
-					DisciplineResult result = new DisciplineResult();
+					AcademicResult result = new AcademicResult();
 					result.setSemester(semester);
 					result.setCourse(course);
 					result.setMention(mention);
@@ -98,9 +98,9 @@ public class TranscriptExtractManager implements TranscriptStorage {
 	
 	private void resolveResult(Semester semester,Course course,Mention mention){
 		boolean update = true;
-		DisciplineResult result = this.disciplineResultService.find(semester,course,mention);
+		AcademicResult result = this.disciplineResultService.find(semester,course,mention);
 		if(result == null){
-			result = new DisciplineResult();
+			result = new AcademicResult();
 			update = false;
 		}
 		result.setSemester(semester);

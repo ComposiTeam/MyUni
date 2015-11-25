@@ -1,6 +1,6 @@
 package br.com.caelum.vraptor.dao;
 
-import br.com.caelum.vraptor.model.Institute;
+import br.com.caelum.vraptor.model.unb.Institute;
 
 public class InstituteDAO extends AbstractDAO<Institute> {
 
