@@ -38,7 +38,7 @@
 					<td >Disciplina</td>
 					<td>Mencão</td>
 				</tr>
-				<c:forEach items="${transcript.disciplineResults}" var="results" >
+				<c:forEach items="${transcript.results}" var="results" >
 					<tr>
 						<td>${results.course.discipline.name}</td>
 						<td>${results.mention.abreviation}</td>
