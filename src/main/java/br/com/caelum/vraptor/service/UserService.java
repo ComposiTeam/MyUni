@@ -32,6 +32,10 @@ public class UserService {
 		userDAO.add(user);
 	}
 	
+	public User getUser(String login){
+		return userDAO.find("username", "default");
+	}
+	
 	public boolean existsField(String field, String value){
 		try{
 				if(userDAO.find(field,value) != null){

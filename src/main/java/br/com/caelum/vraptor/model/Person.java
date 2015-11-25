@@ -17,9 +17,9 @@ public class Person {
 	@Column(name="id")
 	private Long id;
 	
-	private String name;
+	protected String name;
 	
-	@OneToOne(optional = false)
+	@OneToOne(optional = true)
 	private User user;
 
 	public Long getId() {

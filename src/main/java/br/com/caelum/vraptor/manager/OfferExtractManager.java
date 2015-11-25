@@ -14,11 +14,14 @@ import br.com.caelum.vraptor.model.Discipline;
 import br.com.caelum.vraptor.model.Institute;
 import br.com.caelum.vraptor.model.Professor;
 import br.com.caelum.vraptor.model.Time;
+import br.com.caelum.vraptor.model.User;
 import br.com.caelum.vraptor.model.coursetime.Semester;
 import br.com.caelum.vraptor.service.CourseService;
 import br.com.caelum.vraptor.service.DisciplineService;
 import br.com.caelum.vraptor.service.InstituteService;
 import br.com.caelum.vraptor.service.SemesterService;
+import br.com.caelum.vraptor.service.UserService;
+import br.com.caelum.vraptor.service.ProfessorService;
 import br.com.compositeam.unb.CoursePage;
 import br.com.compositeam.unb.OfferPage;
 import br.com.compositeam.unb.storage.CampusStorage;
@@ -33,19 +36,24 @@ public class OfferExtractManager implements CourseStorage,CampusStorage {
 	private Discipline disciplineExtracting = null;
 	private CourseService courseService;
 	private SemesterService semesterService;
-	
+	private UserService userService;
+    private ProfessorService professorService;
+
 	@Inject
 	public OfferExtractManager(InstituteService instituteService, CourseService courseService, 
-			DisciplineService disciplineService, SemesterService semesterService){
+			DisciplineService disciplineService, SemesterService semesterService,
+			UserService userService, ProfessorService professorService ){
 		this.instituteService = instituteService;
 		this.courseService = courseService;
 		this.disciplineService = disciplineService;
 		this.semesterService = semesterService;
 		this.institutes = new ArrayList<Institute>();
+		this.userService = userService;
+        this.professorService = professorService;
 	}
 	
 	public OfferExtractManager(){
-		this(null,null,null,null);
+		this(null,null,null,null,null,null);
 	}
 	
 	public void getData(){
@@ -93,6 +101,7 @@ public class OfferExtractManager implements CourseStorage,CampusStorage {
 	public void save(Map<String, String> data) {
 		// TODO Auto-generated method stub
 		Semester semester = getSemester("2015/2");
+		User user = getDefaultUser();
 		logger.info("Finded the semester");
 		for(String clas : data.keySet()){
 			logger.info("It is going to process the course");
@@ -120,9 +129,14 @@ public class OfferExtractManager implements CourseStorage,CampusStorage {
 					course.addTime(time);
 				}
 				for(int i = times + 4; i < piece.length;i++){
-					Professor professor = new Professor();
-					logger.info("Professor: " + piece[i]);
-					professor.setName(piece[i]);
+					String professorName = piece[i];
+                    logger.info("Professor: " + piece[i]);
+					Professor professor = professorService.findByName(professorName);
+                    if(professor == null){
+                        professor = new Professor();
+					    professor.setName(piece[i]);
+					    professor.setUser(user);
+                    }
 					course.addProfessor(professor);
 				}
 				logger.info("The course is going to be saved");
@@ -154,6 +168,10 @@ public class OfferExtractManager implements CourseStorage,CampusStorage {
 	private Course getCourse(Semester semester, Discipline discipline){
 		Course course = courseService.findCourse(semester, discipline);
 		return course;
+	}
+	
+	private User getDefaultUser(){
+		return userService.getUser("default");
 	}
 
 	@Override

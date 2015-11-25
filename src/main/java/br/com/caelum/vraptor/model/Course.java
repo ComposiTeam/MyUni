@@ -3,6 +3,7 @@ package br.com.caelum.vraptor.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -27,7 +28,7 @@ public class Course {
 	
 	private String discription;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "professorCourse", joinColumns = @JoinColumn(name = "idCourse"), 
 			inverseJoinColumns = @JoinColumn(name = "idProfessor"))
 	private List<Professor> professors;
@@ -35,7 +36,7 @@ public class Course {
 	@ManyToOne(optional = false)
 	private Semester semester;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "timesCourse", joinColumns = @JoinColumn(name = "idCourse"), 
 			inverseJoinColumns = @JoinColumn(name = "idTime"))
 	private List<Time> times;
