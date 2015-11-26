@@ -43,4 +43,4 @@ public class AcademicResultService {
 		return this.academicResultDAO.find(semester,course,mention);
 	}
 
-}
+}	

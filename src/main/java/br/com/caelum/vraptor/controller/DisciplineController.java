@@ -84,6 +84,7 @@ public class DisciplineController {
 		OfferPage offerPage = new OfferPage("650",this.disciplineService);
 		offerPage.extractData();
 		offerPage.save();
+		result.redirectTo(DisciplineController.class).list();
 	}
 	
 	public void offer(){
