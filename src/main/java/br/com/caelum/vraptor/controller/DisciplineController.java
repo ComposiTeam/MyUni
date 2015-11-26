@@ -27,21 +27,19 @@ public class DisciplineController {
 	private final DisciplineService disciplineService;
 	private final Result result;
 	private Validator validator;
-	private OfferExtractManager offer;
 	
 	public DisciplineController(){
-		this(null,null,null,null,null);
+		this(null,null,null,null);
 	}
 	
 	@Inject
 	public DisciplineController(UserManager userManager, DisciplineService disciplineDAO, Result result,
-			OfferExtractManager offer,Validator validator) {
+			Validator validator) {
 		super();
 		this.userManager = userManager;
 		this.result = result;
 		this.disciplineService = disciplineDAO;
 		this.validator = validator;
-		this.offer = offer;
 	}
 	
 	@Get("/discipline")
@@ -87,11 +85,7 @@ public class DisciplineController {
 		result.redirectTo(DisciplineController.class).list();
 	}
 	
-	public void offer(){
-		offer.getData();
-		
-		
-	}
+	
 	
 	
 }

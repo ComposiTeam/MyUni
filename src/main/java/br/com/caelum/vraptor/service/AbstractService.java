@@ -4,7 +4,7 @@ import br.com.caelum.vraptor.dao.AbstractDAO;
 
 public abstract class AbstractService<T> {
 	
-	private AbstractDAO dao;
+	protected AbstractDAO dao;
 	
 	public AbstractService(AbstractDAO dao){
 		this.dao = dao;

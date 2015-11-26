@@ -57,7 +57,7 @@ public class OfferExtractManager implements CourseStorage,CampusStorage {
 	}
 	
 	public void getData(){
-		this.saveInsitituteDIP();
+		this.saveInsitituteFGA();
 		this.saveDisciplines();
 		
 	}

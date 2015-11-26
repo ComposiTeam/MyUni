@@ -1,15 +1,22 @@
 package br.com.caelum.vraptor.dao;
 
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import br.com.caelum.vraptor.controller.RegisterStudentController;
+import br.com.caelum.vraptor.model.unb.Campus;
 
 public abstract class AbstractDAO<T> implements DAOInterface<T> {
 	
@@ -46,16 +53,23 @@ public abstract class AbstractDAO<T> implements DAOInterface<T> {
 		} 
 	}
 	
-	public List<T> list() {
-		logger.info("The method list is goint to be executed ");
-		String sql = "SELECT ALL  FROM " + this.getClass().getName();
-		logger.info("The sql used is " + sql);
-		Query query = manager.createQuery(sql);
+	public List<T> list(){
+		T ob = null;
+		logger.info("Class type: " + ob.getClass().getName());
+		Class<T> c = null;
+		try {
+			c = (Class<T>) Class.forName(ob.getClass().getName());
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		CriteriaBuilder cr = this.manager.getCriteriaBuilder();
 		
-		List<T> list = query.getResultList();
-		logger.info("The number of elements returned is " + list.size());
-		
-		return list;
+		CriteriaQuery<T> criteriaQuery = cr.createQuery(c);
+		Root<T> root = criteriaQuery.from(c);
+		criteriaQuery.select(root);
+		TypedQuery<T> query = this.manager.createQuery(criteriaQuery);
+		return query.getResultList();
 	}
 	
 	

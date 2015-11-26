@@ -23,6 +23,8 @@ public class Campus {
 	
 	private String name;
 	
+	private String code;
+	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "campusInsitutes", joinColumns = @JoinColumn(name = "idCampus"), 
 			inverseJoinColumns = @JoinColumn(name = "idInstitue"))
@@ -38,6 +40,16 @@ public class Campus {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	public String getName() {
