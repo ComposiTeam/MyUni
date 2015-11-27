@@ -52,13 +52,18 @@ public class UnbExtractDataController {
 		this(null,null,null,null,null,null,null);
 	}
 	
+	public void extractData(){
+		extractCampus();
+		extractInstitutes();
+		extractDisciplines();
+	}
 	
 	public void listCampus(){
 		result.include("campus", this.campusService.list());
 	}
 	
 	public void listInstitutes(){
-		result.include("institues", this.instituteService.list());
+		result.include("institutes", this.instituteService.list());
 	}
 	
 	public void extractCampus(){

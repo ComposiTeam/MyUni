@@ -21,8 +21,8 @@
 	<div class="container">
 		<h1>Lista de Campus</h1>
 		<ul class="list-group">
-			<c:forEach items="${campus}" var="camp">
-				<li class="list-group-item">${camp.code} - ${camp.name}</li>
+			<c:forEach items="${institutes}" var="institute">
+				<li class="list-group-item">${institute.code} - ${institute.name}</li>
 			</c:forEach>
 		</ul>
 	</div>
