@@ -20,11 +20,24 @@
 <body>
 	<div class="container">
 		<h1>Lista de Campus</h1>
-		<ul class="list-group">
+		<table class="table table-striped">
+			<tr>
+				<th>Campus</th>
+				<th>Institutos</th>
+				<th>Disciplinas</th>
+			<tr>
 			<c:forEach items="${campus}" var="camp">
-				<li class="list-group-item">${camp.code} - ${camp.name}</li>
+				<c:forEach items="${camp.institutes}" var="institute">
+					<c:forEach items="${institute.disciplines}" var="discipline">
+						<tr>
+							<td>${camp.code} - ${camp.name}</td>
+							<td>${institute.code} - ${institute.name}</td>
+							<td>${discipline.code} - ${discipline.name}</td>
+						</tr>
+					</c:forEach>
+				</c:forEach>
 			</c:forEach>
-		</ul>
+		</table>
 	</div>
 </body>
 </html>
