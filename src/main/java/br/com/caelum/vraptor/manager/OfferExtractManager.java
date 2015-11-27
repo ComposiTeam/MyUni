@@ -57,17 +57,23 @@ public class OfferExtractManager implements CourseStorage,CampusStorage {
 	}
 	
 	public void getData(){
-		this.saveInsitituteFGA();
 		this.saveDisciplines();
 		
 	}
 	
+	
+	
+	public List<Institute> getInstitutes() {
+		return institutes;
+	}
+
+	public void setInstitutes(List<Institute> institutes) {
+		this.institutes = institutes;
+	}
+
 	private void saveDisciplines(){
 		for(Institute institute: institutes){
-			OfferPage offer = new OfferPage(institute.getCode(),disciplineService);
-			offer.extractData();
-			offer.save();
-			List<Discipline> disciplines = disciplineService.list();
+			List<Discipline> disciplines = institute.getDisciplines();
 			int i = 1;
 			int total = disciplines.size();
 			for(Discipline discipline: disciplines){
@@ -81,21 +87,6 @@ public class OfferExtractManager implements CourseStorage,CampusStorage {
 		}
 	}
 	
-	private void saveInsitituteDIP(){
-		Institute institute = new Institute();
-		institute.setCode("410");
-		institute.setName("Direção do Instituto de Psicologia");
-		instituteService.create(institute);
-		institutes.add(institute);
-	}
-	
-	private void saveInsitituteFGA(){
-		Institute institute = new Institute();
-		institute.setCode("650");
-		institute.setName("UnB - Faculdade do Gama");
-		instituteService.create(institute);
-		institutes.add(institute);
-	}
 	
 	@Override
 	public void save(Map<String, String> data) {
@@ -114,7 +105,7 @@ public class OfferExtractManager implements CourseStorage,CampusStorage {
 			}
 			course.setSemester(semester);
 			course.setDiscipline(disciplineExtracting);
-			course.setDiscription(clas);
+			course.setDescription(clas);
 			logger.info("Discipline: " + disciplineExtracting.getName());
 			String everything = data.get(clas);
 			logger.info("Everything: " + everything);

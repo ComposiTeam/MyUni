@@ -26,6 +26,9 @@
                     <li class="page-scroll">
                         <a href="#register">Registre-se</a>
                     </li>
+                    <li class="page-scroll">
+                        <a href="unbExtractData/extractData">Extrair dados</a>
+                    </li>
                     <li>
 	                    <div class="form-group row login-form">
 	                    	<form name="login-form" action="login" method="POST">

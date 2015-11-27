@@ -22,10 +22,13 @@ public class CampusService extends AbstractService<Campus> implements CampusStor
 	public void saveCampus(Map<String, String> data) {
 		// TODO Auto-generated method stub
 		for(String key: data.keySet()){
-			Campus campus = new Campus();
-			campus.setCode(key);
-			campus.setName(data.get(key));
-			this.create(campus);
+			Campus campus = findByCode(key);
+			if(campus == null){
+				campus = new Campus();
+				campus.setCode(key);
+				campus.setName(data.get(key));
+				this.create(campus);
+			}
 		}
 	}
 	

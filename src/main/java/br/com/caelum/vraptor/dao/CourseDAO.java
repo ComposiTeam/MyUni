@@ -1,6 +1,8 @@
 package br.com.caelum.vraptor.dao;
 
 
+import java.util.List;
+
 import javax.persistence.NoResultException;
 import javax.persistence.NonUniqueResultException;
 import javax.persistence.Query;
@@ -38,6 +40,20 @@ public class CourseDAO extends AbstractDAO<Course> {
 			return null;
 		}
 	}
+	
+	public List<Course> findCourses(Semester semester, Discipline discipline) {
+		try {
+			Query query = manager.createQuery("SELECT course FROM Course course WHERE course.semester=:value and course.discipline=:value1");
+			query.setParameter("value", semester);
+			query.setParameter("value1", discipline);
+			return (List<Course>)query.getResultList();
+		} catch (NoResultException exception) {
+			logger.info(exception.getMessage());
+			return null;
+		}
+	}
+	
+	
 	
 	
 

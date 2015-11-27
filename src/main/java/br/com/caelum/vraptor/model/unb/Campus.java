@@ -23,6 +23,7 @@ public class Campus {
 	
 	private String name;
 	
+	@Column(unique = true)
 	private String code;
 	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

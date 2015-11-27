@@ -1,5 +1,6 @@
 package br.com.caelum.vraptor.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -8,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import br.com.caelum.vraptor.Controller;
+import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.manager.DisciplineManager;
 import br.com.caelum.vraptor.manager.InstituteManager;
@@ -55,6 +57,7 @@ public class UnbExtractDataController {
 		extractCampus();
 		extractInstitutes();
 		extractDisciplines();
+		extractOffer();
 	}
 	
 	public void listCampus(){
@@ -65,6 +68,22 @@ public class UnbExtractDataController {
 		result.include("institutes", this.instituteService.list());
 	}
 	
+	@Path("/extract/{institute.id}")
+	public void extractInstitute(Institute institute){
+		if(institute != null){
+			managerDiscipline.setInstitute(institute);
+			OfferPage offerPage = new OfferPage(institute.getCode(),managerDiscipline);
+			offerPage.extractData();
+			offerPage.save();
+			instituteService.update(institute);
+			result.include("mensagem", "Extracao correta");
+			logger.info("Extract disciplines from just one institute was done well");
+		}else{
+			result.include("mensagem", "Extracao incorreta");
+			logger.info("Extract disciplines from just one institute was not done well");
+		}
+		result.redirectTo(DisciplineController.class).list();
+	}
 	public void extractCampus(){
 		CampusPage page = new CampusPage(campusService);
 		page.extractData();
@@ -97,6 +116,13 @@ public class UnbExtractDataController {
 	}
 	
 	public void extractOffer(){
-		this.manager.getData();
+		Campus fga = this.campusService.findByCode("4");
+		List<Campus> campus = new ArrayList<Campus>();
+		campus.add(fga);
+		for(Campus camp : campus){
+			System.out.println(camp);
+			manager.setInstitutes(camp.getInstitutes());
+			manager.getData();
+		}
 	}
 }

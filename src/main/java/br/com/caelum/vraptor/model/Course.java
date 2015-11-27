@@ -26,7 +26,7 @@ public class Course {
 	@ManyToOne(optional = false)
 	private Discipline discipline;
 	
-	private String discription;
+	private String description;
 	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "professorCourse", joinColumns = @JoinColumn(name = "idCourse"), 
@@ -62,12 +62,13 @@ public class Course {
 		this.discipline = discipline;
 	}
 
-	public String getDiscription() {
-		return discription;
+
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDiscription(String discription) {
-		this.discription = discription;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public List<Professor> getProfessors() {

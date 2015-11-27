@@ -29,7 +29,7 @@ public class Institute {
 	private String name;
 
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinTable(name = "insitutesDisciplines", joinColumns = @JoinColumn(name = "idInstitue"), inverseJoinColumns = @JoinColumn(name = "idDiscipline"))
+	@JoinTable(name = "institutesDisciplines", joinColumns = @JoinColumn(name = "idInstitute"), inverseJoinColumns = @JoinColumn(name = "idDiscipline"))
 	private List<Discipline> disciplines;
 
 	public Institute() {

@@ -1,5 +1,7 @@
 package br.com.caelum.vraptor.service;
 
+import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
@@ -28,5 +30,9 @@ public class CourseService {
 	
 	public Course findCourse(Semester semester, Discipline discipline){
 		return this.courseDAO.findCourse(semester, discipline);
+	}
+	
+	public List<Course> findCourses(Semester semester, Discipline discipline){
+		return this.courseDAO.findCourses(semester, discipline);
 	}
 }
