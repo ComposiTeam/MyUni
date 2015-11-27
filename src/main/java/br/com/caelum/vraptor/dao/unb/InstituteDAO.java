@@ -11,28 +11,29 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import br.com.caelum.vraptor.dao.AbstractDAO;
+import br.com.caelum.vraptor.model.Discipline;
 import br.com.caelum.vraptor.model.unb.Campus;
 import br.com.caelum.vraptor.model.unb.Institute;
 
-public class CampusDAO extends AbstractDAO<Campus> {
+public class InstituteDAO extends AbstractDAO<Institute> {
 
 	@Override
-	public Campus getEntityByField(String field, Object object) {
+	public Institute getEntityByField(String field, Object object) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Campus searchByID(Long id) {
+	public Institute searchByID(Long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	public Campus findByCode(String code){
+
+	public Institute findByCode(String code) {
 		try {
-			Query query = manager.createQuery("SELECT campus FROM Campus campus WHERE campus.code=:value ");
+			Query query = manager.createQuery("SELECT institute FROM Institute institute WHERE institute.code=:value ");
 			query.setParameter("value", code);
-			return (Campus)query.getSingleResult();
+			return (Institute)query.getSingleResult();
 		} catch (NonUniqueResultException exception){
 			logger.info(exception.getMessage());
 			return null;
@@ -42,16 +43,13 @@ public class CampusDAO extends AbstractDAO<Campus> {
 		}
 	}
 	
-	public List<Campus> list(){
+	public List<Institute> list(){
 		CriteriaBuilder cr = this.manager.getCriteriaBuilder();
-		CriteriaQuery<Campus> criteriaQuery = cr.createQuery(Campus.class);
-		Root<Campus> root = criteriaQuery.from(Campus.class);
+		CriteriaQuery<Institute> criteriaQuery = cr.createQuery(Institute.class);
+		Root<Institute> root = criteriaQuery.from(Institute.class);
 		criteriaQuery.select(root);
-		TypedQuery<Campus> query = this.manager.createQuery(criteriaQuery);
+		TypedQuery<Institute> query = this.manager.createQuery(criteriaQuery);
 		return query.getResultList();
 	}
-	
-	
 
-	
 }

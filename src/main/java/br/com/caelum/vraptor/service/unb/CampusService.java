@@ -32,5 +32,10 @@ public class CampusService extends AbstractService<Campus> implements CampusStor
 	public List<Campus> list(){
 		return this.dao.list();
 	}
+	
+	public Campus findByCode(String code){
+		CampusDAO d = (CampusDAO)this.dao;
+		return d.findByCode(code);
+	}
 
 }

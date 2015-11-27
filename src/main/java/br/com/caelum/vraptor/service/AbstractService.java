@@ -13,4 +13,8 @@ public abstract class AbstractService<T> {
 	public void create(T entity){
 		this.dao.create(entity);
 	}
+	
+	public void update(T entity){
+		this.dao.update(entity);
+	}
 }
