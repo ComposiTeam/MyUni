@@ -63,7 +63,12 @@ public class Campus {
 	public void addInstitue(Institute institute){
 		this.institutes.add(institute);
 	}
-	
-	
 
+	public List<Institute> getInstitutes() {
+		return institutes;
+	}
+
+	public void setInstitutes(List<Institute> institutes) {
+		this.institutes = institutes;
+	}
 }

@@ -17,25 +17,25 @@ import br.com.caelum.vraptor.model.Discipline;
 
 @Entity
 public class Institute {
-	
+
 	@Id
 	@GeneratedValue
-	@Column(name="id")
+	@Column(name = "id")
 	private Long id;
-	
+
 	@Column(unique = true)
 	private String code;
-	
+
 	private String name;
-	
+
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinTable(name = "insitutesDisciplines", joinColumns = @JoinColumn(name = "idInstitue"), 
-			inverseJoinColumns = @JoinColumn(name = "idDiscipline"))
+	@JoinTable(name = "insitutesDisciplines", joinColumns = @JoinColumn(name = "idInstitue"), inverseJoinColumns = @JoinColumn(name = "idDiscipline"))
 	private List<Discipline> disciplines;
 
-	public Institute(){
+	public Institute() {
 		disciplines = new ArrayList<Discipline>();
 	}
+
 	public Long getId() {
 		return id;
 	}
@@ -59,11 +59,17 @@ public class Institute {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	public void addDiscipline(Discipline discipline){
+
+	public void addDiscipline(Discipline discipline) {
 		this.disciplines.add(discipline);
 	}
-	
-	
+
+	public List<Discipline> getDisciplines() {
+		return disciplines;
+	}
+
+	public void setDisciplines(List<Discipline> disciplines) {
+		this.disciplines = disciplines;
+	}
 
 }
