@@ -4,5 +4,6 @@ out
 .settings
 .metadata
 /target/
+/eclipsesettings/
 /upserver/
 /src/main/resources/populateDB2.sql
