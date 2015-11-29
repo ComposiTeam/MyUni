@@ -43,6 +43,22 @@ public class InstituteDAO extends AbstractDAO<Institute> {
 		}
 	}
 	
+	public List<Institute> findByCampus(Campus campus) {
+		try {
+			Query query = manager.createQuery("SELECT distinct i FROM Institute i join i.campus c WHERE c.id=:value");
+			query.setParameter("value", campus.getId());
+			List r = query.getResultList();
+			logger.info("The result return: " + r.size());
+			return query.getResultList();
+		} catch (NonUniqueResultException exception){
+			logger.info(exception.getMessage());
+			return null;
+		} catch (NoResultException exception) {
+			logger.info(exception.getMessage());
+			return null;
+		}
+	}
+	
 	public List<Institute> list(){
 		CriteriaBuilder cr = this.manager.getCriteriaBuilder();
 		CriteriaQuery<Institute> criteriaQuery = cr.createQuery(Institute.class);

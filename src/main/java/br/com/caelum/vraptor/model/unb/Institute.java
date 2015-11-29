@@ -32,6 +32,9 @@ public class Institute {
 	@JoinTable(name = "institutesDisciplines", joinColumns = @JoinColumn(name = "idInstitute"), inverseJoinColumns = @JoinColumn(name = "idDiscipline"))
 	private List<Discipline> disciplines;
 
+	@ManyToMany(mappedBy="institutes")
+	private List<Campus> campus;
+	
 	public Institute() {
 		disciplines = new ArrayList<Discipline>();
 	}
@@ -71,5 +74,15 @@ public class Institute {
 	public void setDisciplines(List<Discipline> disciplines) {
 		this.disciplines = disciplines;
 	}
+
+	public List<Campus> getCampus() {
+		return campus;
+	}
+
+	public void setCampus(List<Campus> campus) {
+		this.campus = campus;
+	}
+	
+	
 
 }

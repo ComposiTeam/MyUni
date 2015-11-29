@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import br.com.caelum.vraptor.dao.unb.InstituteDAO;
+import br.com.caelum.vraptor.model.unb.Campus;
 import br.com.caelum.vraptor.model.unb.Institute;
 import br.com.compositeam.unb.storage.DepartamentStorage;
 
@@ -36,6 +37,10 @@ public class InstituteService {
 	
 	public List<Institute> list(){
 		return this.instituteDAO.list();
+	}
+	
+	public List<Institute> findByCampus(Campus campus){
+		return this.instituteDAO.findByCampus(campus);
 	}
 
 }
