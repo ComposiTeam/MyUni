@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import br.com.caelum.vraptor.dao.DisciplineDAO;
 import br.com.caelum.vraptor.model.Discipline;
+import br.com.caelum.vraptor.model.unb.Institute;
 import br.com.compositeam.unb.storage.OfferStorage;
 
 @RequestScoped
@@ -37,6 +38,10 @@ public class DisciplineService implements OfferStorage {
 	
 	public List<Discipline> list(){
 		return disciplineDAO.list();
+	}
+	
+	public List<Discipline> listByInstitute(Institute institute){
+		return disciplineDAO.listByInstitute(institute.getId());
 	}
 
 	@Override

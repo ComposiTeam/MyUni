@@ -1,9 +1,14 @@
 package br.com.caelum.vraptor.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
+import br.com.caelum.vraptor.model.unb.Institute;
 
 @Entity
 public class Discipline {
@@ -19,6 +24,9 @@ public class Discipline {
 	private String name;
 	
 	private int NumberOfCredits;
+	
+	@ManyToMany(mappedBy = "disciplines")
+	private List<Institute> institutes;
 
 	public Long getId() {
 		return id;
@@ -50,6 +58,14 @@ public class Discipline {
 
 	public void setNumberOfCredits(int numberOfCredits) {
 		NumberOfCredits = numberOfCredits;
+	}
+
+	public List<Institute> getInstitutes() {
+		return institutes;
+	}
+
+	public void setInstitutes(List<Institute> institutes) {
+		this.institutes = institutes;
 	}
 	
 	

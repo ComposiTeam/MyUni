@@ -8,6 +8,7 @@ import javax.persistence.Query;
 
 import br.com.caelum.vraptor.model.Discipline;
 import br.com.caelum.vraptor.model.coursetime.Semester;
+import br.com.caelum.vraptor.model.unb.Institute;
 
 public class DisciplineDAO extends AbstractDAO<Discipline> {
 
@@ -41,6 +42,22 @@ public class DisciplineDAO extends AbstractDAO<Discipline> {
 			Query query = manager.createQuery("SELECT discipline FROM Discipline discipline WHERE discipline.code=:value ");
 			query.setParameter("value", disciplineCode);
 			return (Discipline)query.getSingleResult();
+		} catch (NonUniqueResultException exception){
+			logger.info(exception.getMessage());
+			return null;
+		} catch (NoResultException exception) {
+			logger.info(exception.getMessage());
+			return null;
+		}
+	}
+
+	public List<Discipline> listByInstitute(Long id) {
+		try {
+			Query query = manager.createQuery("SELECT distinct d FROM Discipline d join d.institutes i WHERE i.id=:value");
+			query.setParameter("value", id);
+			List r = query.getResultList();
+			logger.info("The result return: " + r.size());
+			return query.getResultList();
 		} catch (NonUniqueResultException exception){
 			logger.info(exception.getMessage());
 			return null;
