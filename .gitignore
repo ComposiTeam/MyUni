@@ -6,3 +6,4 @@ out
 /target/
 /upserver/
 /src/main/resources/populateDB2.sql
+/eclipsesettings
