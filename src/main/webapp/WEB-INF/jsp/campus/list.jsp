@@ -20,7 +20,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
 </head>
 <body>
-	<div class="container">
+<%@ include file="/WEB-INF/jsp/index/navbar.jsp" %>
+	<div class="container content">
         <div id="campus" class="col-md-4">
             <h1>Lista de Campus</h1>
                 <ul class="list-group">
