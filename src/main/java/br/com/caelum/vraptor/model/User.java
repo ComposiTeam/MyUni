@@ -1,13 +1,22 @@
 package br.com.caelum.vraptor.model;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-public class User {
+public class User implements Serializable {
 	
 	@Id
 	@GeneratedValue
@@ -20,6 +29,11 @@ public class User {
 	private String password;
 	
 	private String email;
+	
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinTable(name = "userRole", joinColumns = @JoinColumn(name = "idUser"), 
+			inverseJoinColumns = @JoinColumn(name = "idRole"))
+	private List<Role> roles = new ArrayList<Role>();
 	
 	public String getUsername() {
 		return username;
@@ -44,6 +58,12 @@ public class User {
 	}
 	public void setId(Long id) {
 		this.id =  id;
+	}
+	public List<Role> getRoles() {
+		return roles;
+	}
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
 	}
 	
 	

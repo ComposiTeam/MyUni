@@ -11,6 +11,7 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.annotation.Students;
 import br.com.caelum.vraptor.dao.UserDAO;
 import br.com.caelum.vraptor.manager.UserManager;
 import br.com.caelum.vraptor.model.Student;
@@ -73,10 +74,12 @@ public class AuthenticationController {
 		result.redirectTo(IndexController.class).index();
 	}
 	
+	@Students
 	@Path("/settings")
 	public void settings(){
 		User user = userManager.getUserLogged();
 		Student student = userDAO.getStudent(user);
+		
 		result.include("student", student);
 		
 	}

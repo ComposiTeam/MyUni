@@ -37,7 +37,9 @@ public class UserManager implements Serializable {
 
 	public boolean isLogged() {
 		boolean isLogged = false;
-		isLogged = (userLogged != null);
+		if(userLogged != null){
+			isLogged = true;
+		}
 
 		return isLogged;
 	}
