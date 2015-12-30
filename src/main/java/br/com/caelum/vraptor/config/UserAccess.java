@@ -17,6 +17,7 @@ import br.com.caelum.vraptor.AroundCall;
 import br.com.caelum.vraptor.BeforeCall;
 import br.com.caelum.vraptor.Intercepts;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.annotation.Professors;
 import br.com.caelum.vraptor.annotation.Students;
 import br.com.caelum.vraptor.controller.CampusController;
 import br.com.caelum.vraptor.controller.ControllerMethod;
@@ -49,10 +50,15 @@ public class UserAccess {
 	@Accepts
 	public boolean accepts(ControllerMethod method){
 		logger.info(method.getMethod().getName());
-		this.annotations = method.getAnnotations();
 		logg();
 		if(method.containsAnnotation(Students.class)){
+			this.annotations = method.getAnnotations();
 			logger.info("The method contatins Students annotation");
+			return true;
+		}else if(method.containsAnnotation(Professors.class)){
+			this.annotations = method.getAnnotations();
+			logg();
+			logger.info("The method contatins Professors annotation");
 			return true;
 		}
 		logger.info("This is not going to be intercepts");
@@ -83,15 +89,18 @@ public class UserAccess {
 			if(permission == false){
 				redirectToIndex = true;
 			}
+			logger.info("redirectToIndex" + redirectToIndex);
 		}else{
 			redirectToIndex = true;
 		}
 	}
 	
 	private boolean has(Annotation[] annotations, Role role){
+		logger.info("Role " + role.getName());
 		boolean result = false;
 		for(Annotation an : annotations){
-			if(an.getClass().getName().contains(role.getName())){
+			logger.info("An: " + an.annotationType().getName());
+			if(an.annotationType().getName().contains(role.getName())){
 				result = true;
 				break;
 			}
@@ -102,8 +111,10 @@ public class UserAccess {
 	
 	private void logg(){
 		logger.info("Annotations");
-		for(Annotation an : annotations){
-			logger.info(an.annotationType().getName());
+		if(annotations != null){
+			for(Annotation an : annotations){
+				logger.info(an.annotationType().getName());
+			}
 		}
 	}
 	
