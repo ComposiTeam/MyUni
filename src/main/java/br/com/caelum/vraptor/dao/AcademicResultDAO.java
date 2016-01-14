@@ -31,7 +31,7 @@ public class AcademicResultDAO extends AbstractDAO<AcademicResult> {
 				+ transcript.getId());
 		try {
 			Query query = manager
-					.createQuery("SELECT dr FROM DisciplineResult dr WHERE dr.transcript=:value ");
+					.createQuery("SELECT dr FROM AcademicResult dr WHERE dr.transcript=:value ");
 			query.setParameter("value", transcript);
 			return (List<AcademicResult>) query.getResultList();
 		} catch (NoResultException exception) {
@@ -44,7 +44,7 @@ public class AcademicResultDAO extends AbstractDAO<AcademicResult> {
 			Mention mention) {
 		try {
 			Query query = manager
-					.createQuery("SELECT dr FROM DisciplineResult dr WHERE dr.semester=:value and dr.course =: va1 and dr.mention =: val2 ");
+					.createQuery("SELECT dr FROM AcademicResult dr WHERE dr.semester=:value and dr.course =: va1 and dr.mention =: val2 ");
 			query.setParameter("value", semester);
 			query.setParameter("val1", course);
 			query.setParameter("val2", mention);
