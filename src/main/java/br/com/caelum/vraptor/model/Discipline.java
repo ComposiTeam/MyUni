@@ -1,11 +1,16 @@
 package br.com.caelum.vraptor.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import br.com.caelum.vraptor.model.unb.Institute;
@@ -27,6 +32,11 @@ public class Discipline {
 	
 	@ManyToMany(mappedBy = "disciplines")
 	private List<Institute> institutes;
+	
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinTable(name = "disciplinePrerequisite", joinColumns = @JoinColumn(name = "idDiscipline"), 
+			inverseJoinColumns = @JoinColumn(name = "idRequisite"))
+	public List<Discipline> requisites = new ArrayList<Discipline>();
 
 	public Long getId() {
 		return id;
@@ -68,5 +78,9 @@ public class Discipline {
 		this.institutes = institutes;
 	}
 	
-	
+	public void addDiscipline(Discipline discipline){
+		if(discipline != null){
+			this.requisites.add(discipline);
+		}
+	}
 }
