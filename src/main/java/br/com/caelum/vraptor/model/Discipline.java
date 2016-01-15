@@ -79,8 +79,12 @@ public class Discipline {
 	}
 	
 	public void addDiscipline(Discipline discipline){
-		if(discipline != null){
+		if(discipline != null && !discipline.getCode().equals(this.getCode())){
 			this.requisites.add(discipline);
 		}
+	}
+	
+	public int numberPrerequisites(){
+		return this.requisites.size();
 	}
 }
