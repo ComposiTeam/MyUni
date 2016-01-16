@@ -7,14 +7,8 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import br.com.caelum.vraptor.model.Transcript;
 import br.com.caelum.vraptor.model.unb.Campus;
 import br.com.caelum.vraptor.model.unb.Institute;
-import br.com.caelum.vraptor.service.AcademicResultService;
-import br.com.caelum.vraptor.service.CourseService;
-import br.com.caelum.vraptor.service.DisciplineService;
-import br.com.caelum.vraptor.service.MentionService;
-import br.com.caelum.vraptor.service.SemesterService;
 import br.com.caelum.vraptor.service.unb.InstituteService;
 import br.com.compositeam.unb.storage.DepartamentStorage;
 

@@ -12,14 +12,11 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
-import br.com.caelum.vraptor.manager.OfferExtractManager;
-import br.com.caelum.vraptor.manager.TranscriptExtractManager;
 import br.com.caelum.vraptor.manager.UserManager;
 import br.com.caelum.vraptor.model.Discipline;
 import br.com.caelum.vraptor.model.unb.Institute;
 import br.com.caelum.vraptor.service.DisciplineService;
 import br.com.caelum.vraptor.validator.Validator;
-import br.com.compositeam.unb.OfferPage;
 
 @Controller
 public class DisciplineController {

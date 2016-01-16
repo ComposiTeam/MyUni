@@ -6,8 +6,8 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import br.com.caelum.vraptor.dao.AcademicResultDAO;
-import br.com.caelum.vraptor.model.Course;
 import br.com.caelum.vraptor.model.AcademicResult;
+import br.com.caelum.vraptor.model.Course;
 import br.com.caelum.vraptor.model.Mention;
 import br.com.caelum.vraptor.model.Transcript;
 import br.com.caelum.vraptor.model.coursetime.Semester;

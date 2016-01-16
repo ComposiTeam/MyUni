@@ -1,4 +1,3 @@
-<%@ include file="/WEB-INF/layouts/base.jspf" %>
 	<div class="container">
 		<h2>Campus</h2>
 		<form action="create" method="POST">
@@ -15,4 +14,3 @@
 			</table>
 		</form>
 	</div>
-<%@ include file="/WEB-INF/layouts/footer.jspf" %>

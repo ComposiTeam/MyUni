@@ -2,7 +2,6 @@ package br.com.caelum.vraptor.service;
 
 import javax.inject.Inject;
 
-import br.com.caelum.vraptor.dao.AbstractDAO;
 import br.com.caelum.vraptor.dao.RoleDAO;
 import br.com.caelum.vraptor.model.Role;
 

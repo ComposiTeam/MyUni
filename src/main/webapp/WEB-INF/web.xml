@@ -16,4 +16,13 @@
 		<listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
 	</listener>
 
+	<jsp-config>
+		<jsp-property-group>
+			<url-pattern>*.jsp</url-pattern>
+			<include-prelude>/WEB-INF/layouts/header.jsp</include-prelude>
+			<include-coda>/WEB-INF/layouts/footer.jsp</include-coda>
+		</jsp-property-group>
+	</jsp-config>
+
+
 </web-app>

@@ -12,7 +12,6 @@ import javax.persistence.criteria.Root;
 
 import br.com.caelum.vraptor.dao.AbstractDAO;
 import br.com.caelum.vraptor.model.unb.Campus;
-import br.com.caelum.vraptor.model.unb.Institute;
 
 public class CampusDAO extends AbstractDAO<Campus> {
 

@@ -11,7 +11,7 @@ import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Result;
-import br.com.caelum.vraptor.controller.IndexController;
+import br.com.caelum.vraptor.manager.TranscriptExtractManager;
 import br.com.caelum.vraptor.manager.UserManager;
 import br.com.caelum.vraptor.model.AcademicResult;
 import br.com.caelum.vraptor.model.Student;
@@ -24,7 +24,6 @@ import br.com.caelum.vraptor.service.TranscriptService;
 import br.com.caelum.vraptor.service.UserService;
 import br.com.caelum.vraptor.validator.Validator;
 import br.com.compositeam.unb.TranscriptPage;
-import br.com.caelum.vraptor.manager.TranscriptExtractManager;
 
 @Controller
 public class TranscriptController {

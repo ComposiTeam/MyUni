@@ -5,7 +5,6 @@ import javax.persistence.NonUniqueResultException;
 import javax.persistence.Query;
 
 import br.com.caelum.vraptor.model.Role;
-import br.com.caelum.vraptor.model.Transcript;
 
 public class RoleDAO extends AbstractDAO<Role> {
 

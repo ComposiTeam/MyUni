@@ -1,7 +1,5 @@
 package br.com.caelum.vraptor.controller;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import org.slf4j.Logger;

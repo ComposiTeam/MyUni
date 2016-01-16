@@ -6,8 +6,8 @@ import javax.persistence.NoResultException;
 import javax.persistence.NonUniqueResultException;
 import javax.persistence.Query;
 
-import br.com.caelum.vraptor.model.Course;
 import br.com.caelum.vraptor.model.AcademicResult;
+import br.com.caelum.vraptor.model.Course;
 import br.com.caelum.vraptor.model.Mention;
 import br.com.caelum.vraptor.model.Transcript;
 import br.com.caelum.vraptor.model.coursetime.Semester;

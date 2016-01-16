@@ -1,5 +1,9 @@
-.login-form{
-	margin-top:10px;	
+body {
+	padding-top: 70px;
+}
+
+.login-form {
+	margin-top: 10px;
 }
 
 .content {
@@ -15,7 +19,7 @@
 	background-color: #FFFFFF;
 }
 
-.error-box{
+.error-box {
 	text-align: center;
 	margin-top: 100px;
 	color: red;

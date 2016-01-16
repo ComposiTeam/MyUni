@@ -8,20 +8,17 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import br.com.caelum.vraptor.model.AcademicResult;
 import br.com.caelum.vraptor.model.Course;
 import br.com.caelum.vraptor.model.Discipline;
-import br.com.caelum.vraptor.model.AcademicResult;
 import br.com.caelum.vraptor.model.Mention;
-import br.com.caelum.vraptor.model.Professor;
-import br.com.caelum.vraptor.model.Time;
 import br.com.caelum.vraptor.model.Transcript;
 import br.com.caelum.vraptor.model.coursetime.Semester;
-import br.com.caelum.vraptor.service.CourseService;
 import br.com.caelum.vraptor.service.AcademicResultService;
+import br.com.caelum.vraptor.service.CourseService;
 import br.com.caelum.vraptor.service.DisciplineService;
 import br.com.caelum.vraptor.service.MentionService;
 import br.com.caelum.vraptor.service.SemesterService;
-import br.com.caelum.vraptor.service.TranscriptService;
 import br.com.compositeam.unb.storage.TranscriptStorage;
 
 @RequestScoped

@@ -1,12 +1,9 @@
 package br.com.caelum.vraptor.dao;
 
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -14,9 +11,6 @@ import javax.persistence.criteria.Root;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import br.com.caelum.vraptor.controller.RegisterStudentController;
-import br.com.caelum.vraptor.model.unb.Campus;
 
 public abstract class AbstractDAO<T> implements DAOInterface<T> {
 	
