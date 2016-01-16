@@ -21,4 +21,10 @@ public class ProgramService extends AbstractService<Program> {
 		return programDAO.list();
 	}
 
+	public Program findById(String idProgram) {
+		// TODO Auto-generated method stub
+		ProgramDAO d = (ProgramDAO)this.dao;
+		return d.findById(idProgram);
+	}
+
 }

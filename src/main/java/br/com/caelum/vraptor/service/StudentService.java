@@ -30,6 +30,10 @@ public class StudentService {
 	public Transcript getTranscript(Student student){
 		return this.studentDAO.getTranscript(student);
 	}
+	
+	public void update(Student student){
+		this.studentDAO.update(student);
+	}
 
 	
 }

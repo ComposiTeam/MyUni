@@ -84,6 +84,7 @@
 								  <li><a href="#">Separated link</a></li>
 								  <li role="separator" class="divider"></li>
 								  <li><a href="#">Another</a></li>
+								  <li><a href="chProgram">Curso</a></li>
 								</ul>
 		                    </li>  	
 			            </c:when>

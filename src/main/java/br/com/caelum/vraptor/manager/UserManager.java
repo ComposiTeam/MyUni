@@ -64,10 +64,10 @@ public class UserManager implements Serializable {
 	 */
 	public boolean isStudent() {
 		boolean showMenuStudent = false;
-		
+		logger.info("Checking if user is a student.");
 		try {
 			List<Role> roles = userLogged.getRoles();
-			
+			logger.info("Number of roles: " + roles.size());
 			// Search role
 			for(Role role : roles) {
 				// verifies role
@@ -76,7 +76,7 @@ public class UserManager implements Serializable {
 				}
 			}
 		} catch (NullPointerException nullPointerException) {
-			logger.debug(nullPointerException.getMessage());
+				logger.debug(nullPointerException.getMessage());
 		}
 		
 		return showMenuStudent;
@@ -101,7 +101,9 @@ public class UserManager implements Serializable {
 				}
 			}
 		} catch (NullPointerException nullPointerException) {
-			logger.debug(nullPointerException.getMessage());
+			if(logger != null){
+				logger.debug(nullPointerException.getMessage());
+			}
 		}
 		
 		return showProfessorMenu;

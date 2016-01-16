@@ -22,7 +22,12 @@ public class UserDAO {
 	
 	
 	public void add(User user){
-		manager.persist(user);
+		try{
+			manager.persist(user);
+		}catch(Exception ex){
+			ex.printStackTrace();
+			manager.flush();
+		}
 	}
 	
 	public User find(String field, Object value){
