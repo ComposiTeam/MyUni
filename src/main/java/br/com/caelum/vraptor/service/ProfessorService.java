@@ -2,8 +2,9 @@ package br.com.caelum.vraptor.service;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import br.com.caelum.vraptor.model.Professor;
+
 import br.com.caelum.vraptor.dao.ProfessorDAO;
+import br.com.caelum.vraptor.model.Professor;
 
 
 @RequestScoped

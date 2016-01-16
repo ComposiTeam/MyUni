@@ -4,7 +4,6 @@ import javax.persistence.NoResultException;
 import javax.persistence.NonUniqueResultException;
 import javax.persistence.Query;
 
-import br.com.caelum.vraptor.model.Discipline;
 import br.com.caelum.vraptor.model.Mention;
 
 public class MentionDAO extends AbstractDAO<Mention> {

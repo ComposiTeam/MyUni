@@ -6,7 +6,6 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import br.com.caelum.vraptor.dao.DisciplineDAO;
 import br.com.caelum.vraptor.dao.SemesterDAO;
 import br.com.caelum.vraptor.model.coursetime.Semester;
 

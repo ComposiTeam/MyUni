@@ -1,4 +1,17 @@
+<head>
+<title>Gradplanner</title>
+<link href="<c:url value='/css/stylesheet.css'/>" rel="stylesheet">
 
+<!-- jQuery -->
+<script src="<c:url value='/js/jquery.js'/>"></script>
+
+<!-- Bootstrap Core -->
+<script src="<c:url value='/js/bootstrap.min.js'/>"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+</head>
 <body id="page-top" class="index">
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top">

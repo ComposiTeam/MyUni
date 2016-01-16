@@ -1,9 +1,6 @@
 package br.com.caelum.vraptor.service.unb;
 
-import static org.junit.Assert.*;
-
 import org.easymock.EasyMock;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 

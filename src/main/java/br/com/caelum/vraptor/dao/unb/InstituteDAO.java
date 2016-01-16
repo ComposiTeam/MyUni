@@ -11,7 +11,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import br.com.caelum.vraptor.dao.AbstractDAO;
-import br.com.caelum.vraptor.model.Discipline;
 import br.com.caelum.vraptor.model.unb.Campus;
 import br.com.caelum.vraptor.model.unb.Institute;
 

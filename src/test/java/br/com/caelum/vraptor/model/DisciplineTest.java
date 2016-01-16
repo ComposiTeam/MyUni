@@ -1,7 +1,5 @@
 package br.com.caelum.vraptor.model;
 
-import static org.junit.Assert.*;
-
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -1,5 +1,10 @@
 package br.com.caelum.vraptor.controller;
 
+import javax.inject.Inject;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
@@ -8,11 +13,6 @@ import br.com.caelum.vraptor.annotation.View;
 import br.com.caelum.vraptor.model.Transcript;
 import br.com.caelum.vraptor.service.TranscriptService;
 import br.com.caelum.vraptor.validator.Validator;
-
-import javax.inject.Inject;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 
 @Controller
