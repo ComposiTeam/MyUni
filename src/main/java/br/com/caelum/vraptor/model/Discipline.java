@@ -87,4 +87,10 @@ public class Discipline {
 	public int numberPrerequisites(){
 		return this.requisites.size();
 	}
+
+	public List<Discipline> getRequisites() {
+		return requisites;
+	}
+	
+	
 }
