@@ -20,7 +20,6 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
 	</head>
 <body>
-<div class="container">
 	<!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -34,15 +33,16 @@
                 </button>
                 <a class="navbar-brand" href="#page-top">GradPlanner</a>
             </div>
-			
-            <c:choose>
-				<!-- Without logged user -->
-            	<c:when test="${!manager.isLogged()}">
-		            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		                <ul class="nav navbar-nav navbar-right">
-		                    <li class="hidden">
-		                        <a href="#page-top"></a>
-		                    </li>
+	
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    
+                    <c:choose>
+                         
+         				<c:when test="${!manager.isLogged()}">
 		                    <li class="page-scroll">
 		                        <a href="#register">Registre-se</a>
 		                    </li>
@@ -63,66 +63,50 @@
 			                    	</form>
 			                    </div>
 		                    </li>
-		                </ul>
-		            </div>
-            	</c:when>
-            	
-
-	            <!-- Student logged -->
-	           	<c:when test="${manager.isStudent()}">
-		            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		                <ul class="nav navbar-nav navbar-right">
-		                    <li class="hidden">
-		                        <a href="#page-top"></a>
+	                    </c:when>
+	                    
+	                    <c:when test="${manager.isStudent()}">
+	                  		<li>
+		                        <a href="">Editar perfil</a>
 		                    </li>
-		                    <li class="page-scroll">
-		                        <a href="#register">Editar perfil</a>
+          		            <li>
+		                        <a href="">Histórico</a>
 		                    </li>
-          		            <li class="page-scroll">
-		                        <a href="#register">Histórico</a>
+		                    <li>
+		                        <a href="">Atualizar histórico</a>
 		                    </li>
-		                    <li class="page-scroll">
-		                        <a href="#register">Atualizar histórico</a>
-		                    </li>
-		                    <li class="page-scroll">
+		                    <li>
 		                    	<a class="dropdown-toggle" data-toggle="dropdown">
 		                    		${manager.getUserLogged().getUsername() } <span class="caret"></span>
 		                    	</a>
 								<ul class="dropdown-menu">
-								  <li><a href="#">Action</a></li>
-								  <li><a href="#">Another action</a></li>
-								  <li><a href="#">Something else here</a></li>
-								  <li role="separator" class="divider"></li>
+								  <li><a href="logout">Logout</a></li>
 								  <li><a href="#">Separated link</a></li>
 								  <li role="separator" class="divider"></li>
-								  <li><a href="#">One more separated link</a></li>
+								  <li><a href="#">Another</a></li>
 								</ul>
-		                    </li>
-		                </ul>
-		            </div>
-	            </c:when>
-	            
-            	<!-- Student logged -->
-    	        <c:when test="${manager.professor()}">
-	                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		                <ul class="nav navbar-nav navbar-right">
-		                    <li class="hidden">
-		                        <a href="#page-top"></a>
-		                    </li>
-		                    <li class="page-scroll">
+		                    </li>  	
+			            </c:when>
+			            
+		    	        <c:when test="${manager.isProfessor()}">
+							<li>
 		                        <a href="#register">Extrair os dados</a>
                     		    <li>Todos</li>
 		                        <li>Campus</li>
 		                        <li>Curso</li>
 		                        <li>Disciplinas</li>
 		                    </li>
-		                    <li class="page-scroll">
+		                    <li>
 		                    	<a>${manager.getUserLogged().getUsername() }</a> 
 		                    </li>
-		                </ul>
-		            </div>
-	            </c:when>
-            </c:choose>
+			            </c:when>
+			            
+		            </c:choose>
+                </ul>
+            </div>
+                     
         <!-- closing second container -->
         </div>
     </nav>
+    
+	<div class="container">

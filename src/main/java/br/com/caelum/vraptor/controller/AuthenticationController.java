@@ -29,8 +29,7 @@ public class AuthenticationController {
 	private final Result result;
 	private Validator validator;
 	
-	public AuthenticationController()
-	{
+	public AuthenticationController() {
 		this(null,null,null,null);
 	}
 	
@@ -56,8 +55,8 @@ public class AuthenticationController {
 		if(userAuthenticated != null) {
 			if(userAuthenticated.getPassword().equals(informedPassword)){
 				userManager.login(userAuthenticated);
-				result.redirectTo(AuthenticationController.class).welcome();
 				logger.info("Login success!");
+				result.redirectTo(this).welcome();
 			} else {
 				validator.add(new SimpleMessage(LOGIN_ERROR, "Senha ou login não conferem!"));
 				validator.onErrorUsePageOf(IndexController.class).index();

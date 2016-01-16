@@ -46,17 +46,21 @@ public class RegisterController {
 	@Post
 	@Path("/register")
 	public void register(User user,String optradio){
-		try{
-			logger.info(optradio);
+		try {
+			logger.info("Option radio is " + optradio);
+			
 			Role role = roleService.findByName(optradio);
-			if(role == null){
-				result.redirectTo(IndexController.class).index();
+			
+			if(role == null) {
+				throw new IllegalArgumentException("Invalid role!");
 			}
+			
 			user.addRole(role);
 			userDAO.add(user);
-		}catch(Exception ex){
-			logger.info(ex.getMessage());
+		} catch(Exception exception) {
+			exception.printStackTrace();
 		}
+		
 		result.redirectTo(IndexController.class).index();
 	}
 	

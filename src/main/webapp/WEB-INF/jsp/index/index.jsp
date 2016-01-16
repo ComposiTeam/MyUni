@@ -38,18 +38,23 @@
 					id="email" required="required" placeholder="Entre com o email" />
 				<br /> 
 				<span class="input-group-addon">
-				<label>Perfil:</label> 
-				<label class="radio-inline"> 
-					<input type="radio" name="optradio" value="Students">Studante
-				</label> 
-				<label class="radio-inline"> 
-					<input type="radio"	name="optradio" value="Professor">Professor
-				</label>
-				</span> <span class="input-group-addon"> <input
-					class="form-control" type="checkbox" name="termsOfService"
-					value="terms"> Concordo com os termos de serviço.
-				</span> <br /> <input class="btn btn-success btn-group-justified"
-					type="submit" id="register-button" value="Registrar" />
+					<label>Eu sou </label> 
+					<label class="radio-inline"> 
+						<input type="radio" name="optradio" value="Students">Studante
+					</label> 
+					<label class="radio-inline"> 
+						<input type="radio"	name="optradio" value="Professor">Professor
+					</label>
+				</span>
+				<br/>
+				<div class="text-center">
+		        	<input type="checkbox">
+			        <br/>
+			        Concordo com os termos de serviço.
+			    </div>
+				<br/>
+					<input class="btn btn-success btn-group-justified"
+						type="submit" id="register-button" value="Registrar" />
 			</form>
 		</div>
 	</div>

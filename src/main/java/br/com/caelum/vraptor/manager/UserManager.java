@@ -71,7 +71,7 @@ public class UserManager implements Serializable {
 			// Search role
 			for(Role role : roles) {
 				// verifies role
-				if(role.equals(RoleEnum.STUDENT)) {
+				if(role.getName().equals(RoleEnum.STUDENT.toString())) {
 					showMenuStudent = true;
 				}
 			}
@@ -96,7 +96,7 @@ public class UserManager implements Serializable {
 			// Search role
 			for(Role role : roles) {
 				// verifies role
-				if(role.equals(RoleEnum.PROFESSOR)) {
+				if(role.getName().equals(RoleEnum.PROFESSOR.toString())) {
 					showProfessorMenu = true;
 				}
 			}

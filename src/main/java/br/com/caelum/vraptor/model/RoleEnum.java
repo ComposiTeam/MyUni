@@ -1,8 +1,8 @@
 package br.com.caelum.vraptor.model;
 
 public enum RoleEnum {
-	STUDENT("Stundents"),
-	PROFESSOR("Professor");
+	STUDENT("Students"),
+	PROFESSOR("Professors");
 	
 	private final String role;
 	
