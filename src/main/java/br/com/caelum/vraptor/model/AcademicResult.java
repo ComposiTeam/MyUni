@@ -8,14 +8,18 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import br.com.caelum.vraptor.controller.professor.ProgramController;
 import br.com.caelum.vraptor.model.coursetime.Semester;
 
 @Entity
 public class AcademicResult {
 
+	private static final Logger logger = LoggerFactory.getLogger(AcademicResult.class);
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name = "disciplineResultID")
 	private long id;
 	
 	@OneToOne
@@ -78,6 +82,20 @@ public class AcademicResult {
 		this.course = course;
 	}
 	
+	public Discipline getDiscipline(){
+		return this.course.getDiscipline();
+	}
+	
+	public boolean approved(){
+		boolean approved = false;
+		if(this.mention.getAbreviation().equals(MentionEnum.SS.toString())
+				|| this.mention.getAbreviation().equals(MentionEnum.MS.toString())
+				|| this.mention.getAbreviation().equals(MentionEnum.MM.toString())){
+			approved = true;
+		}
+		logger.info("The discipline is: " + approved);
+		return approved;
+	}
 	
 	
 }

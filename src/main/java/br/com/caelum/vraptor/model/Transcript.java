@@ -1,5 +1,6 @@
 package br.com.caelum.vraptor.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -74,6 +75,24 @@ public class Transcript {
 
 	public void setStudent(Student student) {
 		this.student = student;
+	}
+	
+	public List<Discipline> getDisciplines(){
+		List<Discipline> disciplines = new ArrayList<Discipline>();
+		for(AcademicResult ar : this.results){
+			disciplines.add(ar.getDiscipline());
+		}
+		return disciplines;
+	}
+	
+	public List<Discipline> getDisciplinesApproved(){
+		List<Discipline> disciplines = new ArrayList<Discipline>();
+		for(AcademicResult ar : this.results){
+			if(ar.approved() == true){
+				disciplines.add(ar.getDiscipline());
+			}
+		}
+		return disciplines;
 	}
 	
 	

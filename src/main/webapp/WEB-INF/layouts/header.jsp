@@ -85,6 +85,7 @@
 								  <li role="separator" class="divider"></li>
 								  <li><a href="#">Another</a></li>
 								  <li><a href="chProgram">Curso</a></li>
+								  <li><a href="trview">Histórico</a></li>
 								</ul>
 		                    </li>  	
 			            </c:when>
