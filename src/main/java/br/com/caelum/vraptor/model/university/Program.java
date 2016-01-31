@@ -1,6 +1,7 @@
 package br.com.caelum.vraptor.model.university;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +21,7 @@ import javax.persistence.ManyToMany;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import br.com.caelum.vraptor.adapter.DisciplineAdapter;
 import br.com.caelum.vraptor.controller.AuthenticationController;
 import br.com.caelum.vraptor.model.Discipline;
 
@@ -89,6 +91,11 @@ public class Program {
 		this.name = name;
 	}
 	
+	
+	public Map<Integer, SemesterProgram> getSemesters() {
+		return semesters;
+	}
+
 	public void addDiscipline(int semester, Discipline discipline ){
 		if(semester <= this.getNumSemesters() && semester > 0 ){
 			if(semesters.containsKey(semester)){
@@ -158,6 +165,21 @@ public class Program {
 		}
 		logger.info("Has: " + has);
 		return has;
+	}
+	
+	public List<DisciplineAdapter> getDisciplines(){
+		Set<Integer> keys = new TreeSet<Integer>(semesters.keySet());
+		logger.info("Number of keys: " + keys.size());
+		List<DisciplineAdapter> disciplines = new ArrayList<DisciplineAdapter>();
+		for(Integer key: keys){
+			SemesterProgram sp = semesters.get(key);
+			List<Discipline> dis = sp.getDisciplines();
+			for(Discipline d : dis){
+				DisciplineAdapter da = new DisciplineAdapter(d, key);
+				disciplines.add(da);
+			}
+		}
+		return disciplines;
 	}
 	
 	

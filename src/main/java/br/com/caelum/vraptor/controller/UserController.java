@@ -1,6 +1,9 @@
 package br.com.caelum.vraptor.controller;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 import javax.inject.Inject;
 
@@ -11,11 +14,15 @@ import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.adapter.DisciplineAdapter;
 import br.com.caelum.vraptor.annotation.Students;
 import br.com.caelum.vraptor.manager.UserManager;
+import br.com.caelum.vraptor.model.Discipline;
 import br.com.caelum.vraptor.model.Student;
+import br.com.caelum.vraptor.model.Transcript;
 import br.com.caelum.vraptor.model.User;
 import br.com.caelum.vraptor.model.university.Program;
+import br.com.caelum.vraptor.model.university.SemesterProgram;
 import br.com.caelum.vraptor.service.StudentService;
 import br.com.caelum.vraptor.service.UserService;
 import br.com.caelum.vraptor.service.university.ProgramService;
@@ -56,8 +63,23 @@ public class UserController {
 			}else{
 				logger.info("Student:" + student.getName());
 			}
-			student.getProgram();
+			Transcript transcript = studentService.getTranscript(student);
+			Program program = student.getProgram();
+			logger.info("Semester program: " + program.getNumSemesters());
+			result.include("maxSemester", program.getNumSemesters());
+			
+			List<Discipline> disciplinesApproved = transcript.getDisciplinesApproved();
+			List<DisciplineAdapter> disciplineAdapter = program.getDisciplines();
+			for(DisciplineAdapter da : disciplineAdapter){
+				for(Discipline d: disciplinesApproved){
+					if(da.getDisciplineCode().equals(d.getCode())){
+						da.setApproved(true);
+					}
+				}
+			}
+			result.include("disciplines", disciplineAdapter);
 		}
+		
 	}
 	
 	@Students
