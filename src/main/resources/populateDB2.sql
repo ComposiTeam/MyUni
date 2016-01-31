@@ -1,4 +1,4 @@
-USE gradplanner_2;
+USE MyUni;
 
 INSERT INTO Role(name) VALUES('Students');
 INSERT INTO Role(name) VALUES('Professors');

@@ -1,4 +1,4 @@
-# GradPlanner_2
+# MyUni
 
 Projeto reestruturado utilizando a tecnologia VRaptor.
 
