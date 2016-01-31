@@ -135,7 +135,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>gradPlanner</finalName>
+		<finalName>MyUni</finalName>
 		<outputDirectory>${basedir}/src/main/webapp/WEB-INF/classes</outputDirectory>
 		<plugins>
 			<plugin>
@@ -239,12 +239,12 @@
 					<configuration>
 						<url>http://localhost:80/manager/text/</url>
 						<server>TomcatServer</server>
-						<path>/gradPlanner</path>
+						<path>/MyUni</path>
 					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
 
-	<artifactId>gradPlanner</artifactId>
+	<artifactId>MyUni</artifactId>
 </project>
