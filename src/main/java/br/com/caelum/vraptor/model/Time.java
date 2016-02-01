@@ -62,6 +62,22 @@ public class Time {
 		time.setEnd(pieces[3]);
 		return time;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Time){
+			Time t = (Time)obj;
+			if(t.getDay().equals(this.getDay()) && t.getBegin().equals(this.getBegin()) && t.getEnd().equals(this.getEnd()) ){
+				return true;
+			}else{
+				return false;
+			}
+		}
+		return false;
+		
+	}
+	
+	
 	
 	
 }

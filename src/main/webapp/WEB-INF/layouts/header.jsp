@@ -70,7 +70,7 @@
 		                        <a href="">Editar perfil</a>
 		                    </li>
           		            <li>
-		                        <a href="">Histórico</a>
+		                        <a href="transcript/mwtranscript">Histórico</a>
 		                    </li>
 		                    <li>
 		                        <a href="">Atualizar histórico</a>
